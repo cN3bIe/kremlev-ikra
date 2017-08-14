@@ -3,6 +3,7 @@
 !/src/html
 !/src/images
 !/src/img
+!/src/js
 !/src/libs
 /src/libs/*
 !/src/libs/custom

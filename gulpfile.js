@@ -48,7 +48,7 @@ gulp.task( 'sass',()=>{
 
 .task( 'custom-libs-sass',()=>{
 	return gulp.src([
-			'src/libs/custom/sass/custom.scss'
+			'src/libs/custom/sass/custom.sass'
 		])
 		.pipe(sourcemaps.init())
 		.pipe( sass({ outputStyle: 'compact' }) ).on( 'error', sass.logError )
@@ -60,6 +60,7 @@ gulp.task( 'sass',()=>{
 
 .task( 'custom-libs-js',()=>{
 	return gulp.src([
+			'src/libs/custom/js/markup.js',
 			'src/libs/material-design-lite/material.min.js',
 			'src/libs/custom/js/waves/waves.js',
 		])

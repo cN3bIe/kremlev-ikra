@@ -50,11 +50,22 @@
 							&:hover
 								background-color: $color-bg-section
 			.bl-wr
-				height: inherit
 				float: right
 				height: 100%
-				padding: 25px 0
+				padding: 14px 0
 				.search
+					display: inline-block
+					.tcon.tcon-search--xcross
+						height: 100%
+						width: 100%
+						padding: 0
+						.tcon-search__item
+							transform: rotate(-135deg)
+							&:before
+								height: 2px
+							&:after
+								width: 23.00012px
+								height: 23.00012px
 				.bookmark
 				.bascket
 				.phone
