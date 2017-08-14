@@ -1,0 +1,119 @@
+.section.card
+	.main-info
+		.bl-photo
+			.main-photo
+			.wr-thumbnail
+			.item-thumbnail
+		.bl-order
+			padding: 28px 21px 56px 49px
+			border: $border-line
+			.bl-bookmark
+				text-align: right
+				.ic.bookmark
+				.close.v1
+					display: none
+					&.active
+						display: block
+			.title-card
+				margin:
+					top: 28px
+					bottom: 49px
+				line-height: 29px
+				font:
+					size: 24px
+					weight: 400
+			.name
+				line-height: 22px
+				font:
+					size: 18px
+					weight: 400
+				margin-bottom: 12px
+			.price
+				margin-bottom: 47px
+				line-height: 43px
+				font:
+					size: 36px
+					weight: 700
+			.bl-count
+				max-width: $card-order-width
+				margin: 0 0 12px
+				.bl-brick
+					width: 60px
+					height: 60px
+					line-height: 60px
+					&.reduce-count
+					&.count
+						width: 100%
+						float: none
+						padding: 0 20px
+						font-size: 16px
+						.fi-d
+							text-align: center
+					&.enlarge-count
+						float: right
+			.wr-btn
+				height: $btn-height * 2 + 12px + $brick-border-weight * 4 + 15px
+				overflow: hidden
+				margin-left: -15px
+				padding-left: 15px
+				.btn,
+				.wr-phone
+					margin: 0 0 12px
+					max-width: $card-order-width
+					width: 100%
+					font-size: 16px
+				.wr-phone
+					border: $brick-border
+					min-height: $btn-height
+					line-height: $btn-height
+					text-align: center
+					.fi-d
+						text-align: center
+				.wr-phone,
+				#make-order
+					display: none
+	.more-detailed
+		.wr-control-tab
+			border-bottom: $border-line
+			padding-bottom: 21px
+			display: inline-block
+			.item-control-tab
+				margin-right: 40px
+				line-height: 22px
+				color: #ACA9A9
+				font:
+					size: 18px
+					weight: 400
+				cursor: pointer
+				&:last-child
+					margin-right: 0
+				&.active
+					color: #41516B
+		.wr-tabs
+			margin-top: 20px
+			.item-tab
+				display: none
+				.ul-d
+					.li-d
+						line-height: 24px
+						font-size: 16px
+						.name
+							font-weight: 700
+						.text
+				&.active
+					display: block
+			.wr-sert
+				.item-sert
+					float: left
+					margin-right: 20px
+					.img
+				&.v1
+					.item-sert
+						.img
+							min-height: 309px
+							min-width: 223px
+				&.v2
+					.item-sert
+						.img
+							min-height: 224px
+							min-width: 308px

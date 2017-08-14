@@ -1,0 +1,77 @@
+/* common-section -------------------------------------------------------------------------------*/
+html,body
+	height: 100%
+	width: 100%
+
+h1, h2, h3, h4, h5, h6, p, body
+	font:
+		family: '__Geometria_5', Arial, Helvetica Neue, Helvetica, sans-serif;
+		size: 14px;
+		feature-settings: 'liga';
+	-moz-font-feature-settings: 'liga';
+	text:
+		align: left;
+		rendering: optimizeLegibility;
+	line-height: 17px;
+	word-wrap: break-word;
+
+h1
+	line-height: 38px
+	font-size: 38px
+	margin: 55px 0 40px
+
+h2
+	line-height: 32px
+	font-size: 22px
+	margin: 45px 0 30px
+
+h3
+	line-height: 28px
+	font-size: 28px
+	margin: 55px 0 40px
+
+h4
+	line-height: 24px
+	font-size: 24px
+	margin: 55px 0 40px
+
+h5
+	line-height: 17px
+	font-size: 17px
+	margin: 55px 0 40px
+
+h6
+	line-height: 14px
+	font-size: 18px
+	margin: 55px 0 40px
+
+
+b,
+strong
+	font-weight: 700
+
+
+a,
+input,
+button,
+textarea
+	&:active,
+	&:hover,
+	&:focus
+		outline: none !important
+
+
+
+ul:not(.browser-default)
+	padding-left: 24px
+	&,
+	& li
+		list-style-type: disc
+a
+	color: #000
+	text-decoration: none
+	&:focus,
+	&:hover
+		color: $color-primary
+
+

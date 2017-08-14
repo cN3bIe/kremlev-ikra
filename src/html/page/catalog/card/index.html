@@ -1,0 +1,76 @@
+[snp tpl="head.html" title="Карточка товара"]
+<!-- section.section.card>.wr>(.main-info>(.bl-photo>.main-photo+.wr-thumbnail>.item-thumbnail*3)+.bl-order>.bl-bookmark>.ic.bookmark^+.title-card{Икра стерляди Горкунов, 100 г}+.name{Цена:}+.price{3800 руб.}+.name{Количество:}+.bl-count.row>a.a-d.reduce-count.bl-brick[href="#reduce"]{-}+.count.bl-brick>input.fi-d[type="text"]^+a.a-d.enlarge-count.bl-brick[href="#enlerge"]{+}^+.btn{Добавить в корзину}+.btn.v1{Купить в один клик})+.more-detailed>.wr-control-tab>.item-control-tab{Таб}*3^+.wr-tabs>.item-tab{Тело таба}*3>ul.ul-d>li.li-d*5>.name{Название}+.text{Характеристика} -->
+<section class="section card">
+	<div class="wr">
+		<div class="main-info row">
+			<div class="col s12 m7 p0">
+				<div class="bl-photo">
+					<div class="main-photo img bg-contain" style="background-image: url('/img/product-1.png')"></div>
+					<div class="wr-thumbnail">
+						<div class="item-thumbnail img bg-contain" style="background-image: url('/img/product-1.png')"></div>
+						<div class="item-thumbnail img bg-contain" style="background-image: url('/img/product-2.png')"></div>
+						<div class="item-thumbnail img bg-contain" style="background-image: url('/img/product-3.png')"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m5 p0">
+				<div class="bl-order">
+					<div class="bl-bookmark">
+						<a href="#bookmark" class="ic bookmark"></a>
+						<a href="#close" class="ic close v1"></a>
+					</div>
+					<div class="title-card">Икра стерляди Горкунов, 100 г</div>
+					<div class="name">Цена:</div>
+					<div class="price">3800 руб.</div>
+					<div class="name">Количество:</div>
+					<div class="bl-count row">
+						<div class="col s3 p0">
+							<a href="#reduce" class="a-d reduce-count bl-brick">-</a>
+						</div>
+						<div class="col s6 p0">
+							<div class="count bl-brick"><input type="text" class="fi-d" value="1"></div>
+						</div>
+						<div class="col s3 p0">
+							<a href="#enlerge" class="a-d enlarge-count bl-brick">+</a>
+						</div>
+					</div>
+					<div class="wr-btn">
+						<div id="add-bascket" class="btn">Добавить в корзину</div>
+						<div id="pay-one-click" class="btn v1">Купить в один клик</div>
+						<div id="input-phone" class="wr-phone"><input type="text" class="fi-d phone" placeholder="Введите ваш телефон"></div>
+						<div id="make-order" class="btn">Заказать товар</div>
+					</div>
+				</div>
+				<div class="bl-share">
+					<div class="title-share">Делитесь с друзьями:</div>
+					<div class="ssk-group">
+						<a href="" class="ssk ssk-icon ssk-facebook" data-ssk-ready="true"></a>
+						<a href="" class="ssk ssk-icon ssk-twitter" data-ssk-ready="true"></a>
+						<a href="" class="ssk ssk-icon ssk-google-plus" data-ssk-ready="true"></a>
+						<a href="" class="ssk ssk-icon ssk-vk" data-ssk-ready="true"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="more-detailed">
+			<div class="wr-control-tab">
+				<span class="item-control-tab active" data-tab="#description">Описание</span>
+				<span class="item-control-tab" data-tab="#sertificat">Сертификаты</span>
+				<span class="item-control-tab" data-tab="#delivery">Доставка</span>
+			</div>
+			<div class="wr-tabs">
+				<div id="description" class="item-tab active">
+					[snp tpl="tab-item-description.html" ]
+				</div>
+				<div id="sertificat" class="item-tab">
+					[snp tpl="tab-item-sertificat.html" ]
+				</div>
+				<div id="delivery" class="item-tab">
+					[snp tpl="tab-item-delivery.html" ]
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+[snp tpl="recomend-section.html" ]
+[snp tpl="foot.html" ]

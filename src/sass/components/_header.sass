@@ -1,0 +1,195 @@
+.main-header
+	.bl-logo
+		float: left
+		max-width: $logo-width
+		min-height: $logo-height
+	.bl-menu
+		margin-left: 155px
+		.top-line
+			height: $header-top-line-height
+			.bl-city
+				position: relative
+				float: left
+				height: 100%
+				padding: 25px 0
+				color: #41516B
+				line-height: 19px
+				font:
+					size: 16px
+					weight: 400
+				#city
+					cursor: pointer
+					background: url('/img/design/arrow-dark-down.png') right center no-repeat
+					padding-right: 30px
+					min-width: 185px
+					display: inline-block
+				.bl-search-city
+					display: none
+					box-shadow: 0px 0px 6px rgba(0,0,0,0.08), 0px 0px 6px rgba(0,0,0,0.08)
+					top: 74%
+					width: 100%
+					position: absolute
+					z-index: 1
+					left: 40px
+					border: $border-line
+					background-color: $color-white
+					.wr-fi
+						padding: 20px
+						border-bottom: $border-line
+						.fi-d
+							border: $border-line
+							padding: 16px
+							width: 100%
+							height: 52px
+							background-color: $color-bg-section
+					.list-city
+						.item-city
+							border-bottom: $border-line
+							padding: 10px 45px
+							cursor: pointer
+							&:hover
+								background-color: $color-bg-section
+			.bl-wr
+				height: inherit
+				float: right
+				height: 100%
+				padding: 25px 0
+				.search
+				.bookmark
+				.bascket
+				.phone
+					font-size: 17px
+					text-align: right
+					line-height: 27px
+					margin-left: 30px
+		.nav-line
+			height: 75px
+			.wr-menu
+				height: 100%
+				.list-menu
+					margin: 0
+					.item-menu
+						display: block
+						float: left
+						height: $header-nav-line-height
+						line-height: $header-nav-line-height
+						.link-item-menu
+							height: 100%
+							padding: 29px 0
+							line-height: 100%
+							font-size: 16px
+					.catalog
+						width: $nav-catalog-width
+						position: relative
+						background-color: #41516B
+						&, .a-d
+							color: $color-white
+						.link-item-menu
+							text-align: center
+						.lvl-1 .a-d
+							font-size: 14px
+						&:hover .wr-catalog
+							display: block
+						.wr-catalog
+							box-sizing: content-box
+							background-color: #41516B
+							display: none
+							position: absolute
+							top: 100%
+							left: 0
+							width: 300%
+							padding: 37px 0 33px 33px
+							.list-catalog
+								.title-category
+									font:
+										size: 16px
+										weight: 700
+									line-height: 19px
+									padding-bottom: 20px
+									&:before
+										width: 60px
+										border-bottom: 1px solid #fff
+								&.lvl-2
+									.a-d
+										margin-top: 20px
+				.wr-lvl-1
+					margin: 0 0 0 $nav-catalog-width
+					.item-menu
+						border-top: $border-line
+						width: 20%
+						text-align: right
+						height: $header-nav-line-height - $border-weight
+						line-height: $header-nav-line-height - $border-weight
+
+@media #{$medium-and-down}
+	.main-header
+		.bl-logo
+		.bl-menu
+			.top-line
+				.bl-city
+					#city
+					.bl-search-city
+						.wr-fi
+							.fi-d
+						.list-city
+							.item-city
+								&:hover
+				.bl-wr
+					.search
+					.bookmark
+					.bascket
+					.phone
+			.nav-line
+				.wr-menu
+					.list-menu
+						.item-menu
+							.link-item-menu
+						.catalog
+							&, .a-d
+							.link-item-menu
+							.lvl-1 .a-d
+							&:hover .wr-catalog
+							.wr-catalog
+								.list-catalog
+									.title-category
+										&:before
+									&.lvl-2
+										.a-d
+					.wr-lvl-1
+						.item-menu
+@media #{$small-and-down}
+	.main-header
+		.bl-logo
+		.bl-menu
+			.top-line
+				.bl-city
+					#city
+					.bl-search-city
+						.wr-fi
+							.fi-d
+						.list-city
+							.item-city
+								&:hover
+				.bl-wr
+					.search
+					.bookmark
+					.bascket
+					.phone
+			.nav-line
+				.wr-menu
+					.list-menu
+						.item-menu
+							.link-item-menu
+						.catalog
+							&, .a-d
+							.link-item-menu
+							.lvl-1 .a-d
+							&:hover .wr-catalog
+							.wr-catalog
+								.list-catalog
+									.title-category
+										&:before
+									&.lvl-2
+										.a-d
+					.wr-lvl-1
+						.item-menu

@@ -1,0 +1,300 @@
+.main-header
+	height: $header-height
+	margin-bottom: -$header-height
+	width: 100%
+	background-color: $color-white
+	position: relative
+	padding-top: $header-padding-top
+	z-index: 1
+.main
+	min-height: 100%
+	padding: $header-height 0 $footer-height 0
+	width: 100%
+	background-color: $color-white
+.main-footer
+	height: $footer-height
+	margin-top: -$footer-height
+	width: 100%
+	background-color: $color-white
+	position: relative
+	z-index: 1
+.wr
+	max-width: $wr-width
+	margin: auto
+	padding: 0 $wr-lr-padding
+@media screen
+	@media (min-width: $wr-width + $wr-lr-padding * 2)
+		.section
+			.wr
+				padding: 0
+.section
+	padding: 0 0 40px 0
+.title
+	font:
+		size: 48px
+		weight: 400
+	text-align: left
+	line-height: 53px
+	margin:
+		top: 46px
+		bottom: 39px
+h1.title
+	font-size: 48px
+h2.title
+	font-size: 42px
+h3.title
+	font-size: 36px
+h4.title
+	font-size: 28px
+h5.title
+	font-size: 24px
+h6.title
+	font-size: 18px
+
+.img
+	display: block
+	background: transparent center center no-repeat
+	background-size: contain
+	min-height: $img-min-height
+	min-width: $img-min-width
+
+
+.ic
+	display: inline-block
+	background: transparent center center no-repeat
+	background-size: contain
+	width: 27px
+	height: 27px
+	margin: 0 5px
+	vertical-align: bottom
+	position: relative
+	&.marker
+		background-image: url("#{$path-design}marker.png")
+		height: 100%
+	&.search
+		background-image: url("#{$path-design}search.png")
+	&.bookmark
+		background-image: url("#{$path-design}bookmark.png")
+		&.active
+			background-image: url("#{$path-design}bookmark-fill.png")
+	&.bascket
+		background-image: url("#{$path-design}bascket.png")
+	&.down-arrow
+		background-image: url("#{$path-design}down-arrow.png")
+		width: 16px
+		height: 16px
+	&.down-arrow-fill
+		background-image: url("#{$path-design}down-arrow-fill.png")
+		width: 16px
+		height: 16px
+	&.mastercard
+		background-image: url("#{$path-design}mastercard.png")
+		width: 50px
+		height: 25px
+	&.visa
+		background-image: url("#{$path-design}visa.png")
+		width: 50px
+		height: 25px
+	&.close
+		background-image: url("#{$path-design}close.png")
+		position: relative
+		&.v1
+			background: none
+			&:before,
+			&:after
+				content: ''
+				display: block
+				position: absolute
+				width: 100%
+				height: 4px
+				border-radius: 5px
+				background-color: $color-black
+				top: 45%
+			&:before
+				transform: rotate(45deg)
+			&:after
+				transform: rotate(-45deg)
+
+.badget
+	display: block
+	position: absolute
+	width: $badget-height
+	height: $badget-width
+	line-height: $badget-height
+	top: -$badget-height + 5px
+	right: -$badget-height + 5px
+	font-size: 12px
+	border-radius: 50%
+	background-color: $color-yellow
+	left: auto
+	bottom: auto
+	text-align: center
+.btn,
+.btn:hover,
+.btn:active,
+.btn:focus,
+.btn:visited,
+	text-align: center
+	min-height: $btn-height
+	line-height: $btn-height
+	font-size: 16px
+	background-color: $color-primary
+	border-radius: 0
+	padding: 0
+	margin: 0
+	color: $color-white !important
+	min-width: 210px
+	overflow: hidden
+	position: relative
+	border: $btn-weight-border solid $color-primary
+	&:hover
+		background-color: $color-primary-light
+		line-height: $btn-height
+		border: $btn-weight-border solid $color-primary-light
+	&.v1
+		background-color: $color-white
+		color: $color-primary !important
+		&.waves-light .waves-ripple
+			$gradient: rgba($color-primary-rgb, 0.2) 0, rgba($color-primary-rgb, 0.3) 40%, rgba($color-primary-rgb, 0.4) 50%, rgba($color-primary-rgb, 0.5) 60%, rgba($color-primary-rgb, 0) 70%
+			background: rgba($color-primary-rgb, 0.4)
+			background: -webkit-radial-gradient($gradient)
+			background: -o-radial-gradient($gradient)
+			background: -moz-radial-gradient($gradient)
+			background: radial-gradient($gradient)
+.b
+	font-weight: 700
+
+.a-d
+	display: block
+	height: 100%
+	width: 100%
+	&:focus,
+	&:active,
+	&:hover
+		text-decoration: none
+ul.ul-d,
+li.li-d
+	margin: 0
+	padding: 0
+	list-style-type: none
+
+ul.ul-d li.li-d
+	list-style: none
+.fl
+	float: left
+.fr
+	float: right
+.pr
+	position: relative
+
+
+.pow
+	font-size: .7em
+	position: relative
+	bottom: .5em
+
+.br
+	display: block
+	position: relative !important
+	height: 1px
+	width: 1px
+
+.bg-cover
+	background: transparent center center no-repeat
+	-webkit-background-size: cover
+	background-size: cover
+
+.bg-contain
+	background: transparent center center no-repeat
+	-webkit-background-size: contain
+	background-size: contain
+
+.row
+	.col
+		&.m0
+			margin: 0
+		&.p0
+			padding: 0
+
+.before
+	position: relative
+	&:before
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		content: ''
+		width: 100%
+		height: 100%
+		display: block
+		position: absolute
+
+
+.bl-dent
+	-webkit-transition:all .2s ease-out
+	-moz-transition:all .2s ease-out
+	-ms-transition:all .2s ease-out
+	-o-transition:all .2s ease-out
+	transition:all .2s ease-out
+	&:active
+		-webkit-transform: scale(0.95)
+		-moz-transform: scale(0.95)
+		-o-transform: scale(0.95)
+
+.bl-brick
+	float: left
+	width: $brick-side + $brick-border-weight
+	height: $brick-side + $brick-border-weight
+	border: $brick-border-weight solid $color-primary
+	text-align: center
+	line-height: $brick-side
+
+.section.bl-text
+	.title
+		text-align: center
+		line-height: 43px
+		font-size: 36px
+	.text
+		max-width: 90%
+		margin: auto
+		p
+			line-height: 19px
+			font-size: 16px
+			text-align: justify
+.text
+	line-height: 24px
+	font-size: 16px
+	text-align: left
+	font-weight: 400
+/* form-------------*/
+.form
+	margin: 0
+.fi-d
+	border: 0
+	background-color: transparent
+	max-width: 100%
+
+/* Z-levels-------------*/
+.zd-0
+	box-shadow: none !important
+.zd-1
+	box-shadow: 1px 1px 8px rgba(127, 127, 127, 0.3), -1px 1px 8px rgba(127, 127, 127, 0.3)
+.zd-2
+	box-shadow: 2px 2px 8px rgba(127, 127, 127, 0.3), -2px 2px 8px rgba(127, 127, 127, 0.3)
+.zd-3
+	box-shadow: 3px 3px 8px rgba(127, 127, 127, 0.3), -3px 3px 8px rgba(127, 127, 127, 0.3)
+.zd-4
+	box-shadow: 4px 4px 8px rgba(127, 127, 127, 0.3), -4px 4px 8px rgba(127, 127, 127, 0.3)
+/* moveup -------------------------------------------------------------------------------*/
+#moveup
+	width: 55px
+	height: 55px
+	position: fixed
+	bottom: 5%
+	right: 5%
+	background-color: $color-white
+	z-index: 999999
+	.fa-angle-up
+		color: #59595B
+		font-size: 18px
+		line-height: 55px

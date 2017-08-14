@@ -1,0 +1,72 @@
+[snp tpl="head.html" title="Заказ"]
+<section class="section order">
+	<div class="wr">
+		<h1 class="title">Оформление заказа</h1>
+		<div class="wr-order">
+			<form action="" class="form form-order row">
+				<div class="wr-info wr-info-client col s12 m6">
+					<div class="bl-info row">
+						<div class="number bl-brick">1</div>
+						<div class="info">
+							<div class="bl-city">Ваш город:<span class="city">Санкт-Петербург <span class="ic down-arrow-fill"></span></span></div>
+						</div>
+					</div>
+					<div class="bl-info row">
+						<div class="number bl-brick">2</div>
+						<div class="info">
+							<div class="title-info">Контактная информация:</div>
+							<div class="form-input"><input class="fi-d name" type="text" name="name" placeholder="Ваше имя"></div>
+							<div class="form-input"><input class="fi-d phone" type="text" name="phone" placeholder="Ваш телефон"></div>
+							<div class="form-input"><input class="fi-d email" type="text" name="email" placeholder="Ваш E-mail"></div>
+						</div>
+					</div>
+					<div class="bl-info row">
+						<div class="number bl-brick">3</div>
+						<div class="info">
+							<div class="title-info">Выберите способ доставки:</div>
+							[snp tpl="snippets/radio-delivery-on.html" label="Доставка по Москве (в пределах МКАД)" time="с 09:00 до 21:00 часов" id="delivery-1" name="delivery" value="1"]
+							[snp tpl="snippets/radio-delivery-off.html" label="Доставка по Московской области (до 20 км от МКАД)" time="с 09:00 до 21:00 часов" id="delivery-2" name="delivery" value="2"]
+							[snp tpl="snippets/radio-delivery-off.html" label="Самовывоз" time="с 10:00 до 18:00 часов" id="delivery-3" name="delivery" value="3"]
+						</div>
+					</div>
+					<div class="bl-info row">
+						<div class="number bl-brick">4</div>
+						<div class="info">
+							<div class="title-info">Адрес доставки:</div>
+							<textarea class="form-textarea" placeholder="Укажите улицу, дом, корпус, квартиру"></textarea>
+						</div>
+					</div>
+					<div class="bl-info row">
+						<div class="number bl-brick">5</div>
+						<div class="info">
+							<div class="title-info">Выберите способ оплаты:</div>
+							[snp tpl="snippets/radio-on.html" label="Наличными при получении" id="pay-1" name="pay" value="1"]
+							[snp tpl="snippets/radio-off.html" label="Банковской картой при получении" id="pay-2" name="pay" value="2"]
+						</div>
+					</div>
+					<button type="submit" class="btn">Оформить заказ</button>
+				</div>
+				<div class="wr-info wr-info-order col s12 m6">
+					[snp tpl="card-order-item.html" title="Икра стерляди Горкунов, 50 г" price="1800 руб." count="1 "]
+					[snp tpl="card-order-item.html" title="Икра стерляди Горкунов, 50 г" price="1800 руб." count="1 "]
+					[snp tpl="card-order-item.html" title="Икра стерляди Горкунов, 50 г" price="1800 руб." count="1 "]
+					<div class="total">
+						<div class="bl-info sale row">
+							<div class="name">Скидка</div>
+							<div class="price">500 руб.</div>
+						</div>
+						<div class="bl-info delivery row">
+							<div class="name">Стоимость доставки:</div>
+							<div class="price">250 руб.</div>
+						</div>
+						<div class="bl-info bl-total row">
+							<div class="name">Итого:</div>
+							<div class="price">3100 руб.</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+[snp tpl="foot.html" ]

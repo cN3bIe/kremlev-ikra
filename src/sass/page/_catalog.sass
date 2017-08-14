@@ -1,0 +1,91 @@
+.section.catalog
+	background-color: $color-bg-section
+	.title
+		line-height: 43px
+		font-size: 36px
+		margin-top: 70px
+	.wr-catalog
+		.wr-filter
+			border-right: 1px solid $color-line
+			padding: 55px 0 35px
+			background-color: $color-white
+			.form-filter
+				max-width: 205px
+				margin: auto
+				position: relative
+				.reset
+					line-height: 19px
+					color: #ACA9A9
+					font-size: 16px
+					margin-top: 10px
+					.close.v1
+						width: 16px
+						height: 22px
+				.filter-popup
+					background-color: $color-white
+					position: absolute
+					top: 0
+					left: 100%
+					width: $filter-popup-width
+					height: $filter-popup-height
+					display: none
+					.bl-count,
+					.bl-empty,
+					.btn
+						line-height: $filter-popup-height
+						text-align: center
+					.bl-count,
+					.btn
+						min-width: 50%
+						width: 50%
+						float: left
+						font-size: 14px
+						display: none
+					.bl-empty
+				.bl-filter
+					margin-bottom: 40px
+					.title-filter
+						line-height: 19px
+						color: #ACA9A9
+						font-size: 16px
+					.mdl-checkbox
+						cursor: pointer
+						padding-left: $side-checkbox+8px
+						height: $side-checkbox+6px
+						margin-top: 10px
+						.mdl-checkbox__label
+							line-height: $side-checkbox+4px
+							font-size: 16px
+						.mdl-checkbox__box-outline,
+						.mdl-checkbox__focus-helper
+							width: $side-checkbox
+							height: $side-checkbox
+							border-color: $color-primary
+						.mdl-checkbox__ripple-container
+							width: $side-checkbox+18px
+							height: $side-checkbox+18px
+							.mdl-ripple
+								background-color: $color-primary
+						&.is-checked
+							.mdl-checkbox__tick-outline
+								background-color: $color-primary
+		.wr-card.row
+			.item-card
+				.bl-notice
+					height: 60px
+				.img
+					max-width: 220px
+					height: 220px
+				.bl-info
+					.title-card
+						line-height: 19px
+						font-size: 16px
+					.price-card
+						line-height: 22px
+						font-size: 18px
+				.bl-action
+					margin-top: 20px
+					.bookmark
+					.bascket
+				&:last-child
+			&:last-child .item-card

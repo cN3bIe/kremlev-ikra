@@ -1,0 +1,103 @@
+.section.clients
+	.title
+	.wr-control-tab
+		max-width: 300px
+		.item-control-tab
+			line-height: 22px
+			font-size: 18px
+			padding: 30px 0 30px 60px
+			line-height: 22px
+			color: $color-text
+			cursor: pointer
+			background-color: $color-bg-section
+			border-bottom: $border-line
+			&.active
+				background-color: $color-primary
+				color: $color-white
+			&.active,
+			&:last-of-type
+				border-bottom: 0
+	.wr-tabs
+		margin-top: 20px
+		padding-left: 50px
+		.title-tabs
+			line-height: 34px
+			font-size: 28px
+			margin-bottom: 30px
+		.item-tab
+			display: none
+			.ul-d
+				.li-d
+					line-height: 24px
+					font-size: 16px
+					.name
+						font-weight: 700
+					.text
+			&.active
+				display: block
+		.wr-sert
+			.item-sert
+				float: left
+				margin-right: 20px
+				.img
+			&.v1
+				.item-sert
+					.img
+						min-height: 309px
+						min-width: 223px
+			&.v2
+				.item-sert
+					.img
+						min-height: 224px
+						min-width: 308px
+	#delivery
+		.wr-dev
+			.item-dev
+				padding-top: 30px
+				text-align: center
+				.img
+					min-height: 45px
+				.name
+					line-height: 24px
+					font-size: 16px
+				.text
+					line-height: 20px
+					font-size: 14px
+	#faq
+		.wr-faq
+			.item-faq
+				padding: 30px
+				background-color: $color-bg-section
+				border-bottom: $border-line
+				cursor: pointer
+				.question
+					line-height: 24px
+					font-size: 20px
+					&:before
+						background: url('../img/design/arrow-dark-down.png') center center no-repeat
+						width: 20px
+						height: 20px
+						margin: auto
+						left: auto
+						right: 0
+				.answer
+					display: none
+					padding-top: 30px
+					line-height: 19px
+					font-size: 16px
+					padding-right: 60px
+				&.active
+					.question
+						&:before
+							background-image: url('../img/design/arrow-dark-up.png')
+	#pay
+		.title-pay
+			padding-left: 15px
+			line-height: 22px
+			font-size: 18px
+		.wr-pay
+			padding-left: 45px
+			.item-pay
+				line-height: 19px
+				font-size: 16px
+				margin-top: 20px
