@@ -1,6 +1,8 @@
 /node_modules
 /src/*
 !/src/html
+!/src/images
+!/src/img
 !/src/libs
 /src/libs/*
 !/src/libs/custom
