@@ -1,0 +1,8 @@
+/node_modules
+/src/*
+!/src/html
+!/src/libs
+/src/libs/*
+!/src/libs/custom
+/src/libs/custom/dist
+!/src/sass
