@@ -30,7 +30,7 @@ var log = console.log;
 	$(document).ready(function(){
 		console.log('Document ready');
 
-
+		$('.tcon').click(function(){$(this).toggleClass('tcon-transform')});
 
 
 		/*Mask phone init*/

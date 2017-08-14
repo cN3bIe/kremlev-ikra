@@ -7,6 +7,7 @@
 		margin-left: 155px
 		.top-line
 			height: $header-top-line-height
+			position: relative
 			.bl-city
 				position: relative
 				float: left
@@ -52,20 +53,72 @@
 			.bl-wr
 				float: right
 				height: 100%
-				padding: 14px 0
+				padding: 21px 0
 				.search
 					display: inline-block
-					.tcon.tcon-search--xcross
-						height: 100%
-						width: 100%
-						padding: 0
-						.tcon-search__item
-							transform: rotate(-135deg)
-							&:before
-								height: 2px
-							&:after
-								width: 23.00012px
-								height: 23.00012px
+					height: 27px
+					vertical-align: bottom
+					.string-search
+						position: absolute
+						top: 0
+						left: 0
+						right: 308px
+						bottom: 0
+						background-color: $color-white
+					.wr-fetch
+						position: absolute
+						top: 100%
+						background-color: $color-bg-section
+						left: 0
+						right: 0
+						z-index: 1
+						padding: 40px
+						.item-card
+							padding: 20px
+							min-width: 20%
+							.bl-notice
+								min-height: 30px
+							.img
+								min-height: 100px
+							.bl-info
+								margin-top: 15px
+								.title-card
+									font-size: 14px
+									line-height: 17px
+								.price-card
+									font-size: 14px
+									margin-top: 10px
+									.old-price
+							.bl-action
+								margin-top: 10px
+								text-align: right
+								height: 25px
+								.bookmark
+								.bascket
+					.tcon
+						&.tcon-search--xcross
+							height: 100%
+							width: 100%
+							padding: 0
+							.tcon-search__item
+								transform: rotate(-135deg)
+								&::before
+									left: 0
+									right: 0
+									height: 2px
+								&::after
+									left: 0
+									right: -10px
+									width: 23px
+									height: 23px
+							&.tcon-transform
+								.tcon-search__item
+									&::after
+										right: 0
+										height: 2px
+										width: 100%
+									&::before
+										width: 100%
 				.bookmark
 				.bascket
 				.phone

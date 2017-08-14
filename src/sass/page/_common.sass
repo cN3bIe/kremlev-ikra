@@ -2,16 +2,19 @@
 
 
 /*catalog*/
-.section
-	.wr-card.row
-		margin-bottom: 0
-		border-bottom: $border-line
-		&:last-of-type
-			border-bottom: 0
+.wr-card
+	overflow: hidden
+	.row
+		margin:
+			bottom: 0
+			top: - $border-weight
+			left: - $border-weight
 		.item-card
 			padding: 20px
 			background: $color-white
-			border-right: $border-line
+			border:
+				top: $border-line
+				left: $border-line
 			&:last-of-type
 				border-right: 0
 			.bl-notice
