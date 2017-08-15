@@ -72,12 +72,13 @@ gulp.task( 'sass',()=>{
 })
 
 
-.task( 'js-libs',['custom-libs-js'],()=>{
+.task( 'libs-js',['custom-libs-js'],()=>{
 	return gulp.src( [
 		'node_modules/jquery/dist/jquery.min.js',
 		'node_modules/node-waves/dist/waves.min.js',
 		'node_modules/jquery-mask-plugin/dist/jquery.mask.min.js',
 		'node_modules/jquery-lazy/jquery.lazy.min.js',
+		'node_modules/izimodal/js/iziModal.min.js',
 		'src/libs/social-share-kit-1.0.14/dist/js/social-share-kit.min.js',
 		'src/libs/custom/dist/custom.min.js',
 		] )
@@ -90,9 +91,10 @@ gulp.task( 'sass',()=>{
 
 
 
-.task( 'css-libs',['custom-libs-sass'],()=>{
+.task( 'libs-css',['custom-libs-sass'],()=>{
 	return gulp.src([
 			'src/libs/social-share-kit-1.0.14/dist/css/social-share-kit.css',
+			'node_modules/izimodal/css/iziModal.min.css',
 			'src/libs/custom/dist/custom.min.css',
 			'src/libs/material-design-lite/material.min.css',
 		])
@@ -113,7 +115,7 @@ gulp.task( 'sass',()=>{
 
 
 
-.task( 'libs',[ 'css-libs','js-libs','fonts-libs' ])
+.task( 'libs',[ 'libs-css','libs-js','fonts-libs' ])
 
 
 .task( 'clean',()=>{

@@ -26,7 +26,7 @@ var log = console.log;
 		throttle: 250,
 		// delay: 2000
 	});
-*/
+	*/
 	$(document).ready(function(){
 		console.log('Document ready');
 
@@ -165,6 +165,16 @@ var log = console.log;
 			}
 		});
 
+
+
+		if( $('.iziModal').length ){
+			console.log('iziModal init');
+			$('.iziModal').iziModal({width: 1100});
+			$('.btni.bascket').click(function(e){
+				e.preventDefault();
+				$('.iziModal').iziModal('open');
+			});
+		}
 	});
 
 

@@ -25,6 +25,7 @@
     "node-waves": "^0.7.5"
   },
   "dependencies": {
+    "izimodal": "^1.5.0",
     "jquery-lazy": "^1.7.5",
     "jquery-mask-plugin": "^1.14.11",
     "material-components-web": "^0.16.0"
