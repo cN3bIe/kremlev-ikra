@@ -30,8 +30,11 @@ var log = console.log;
 	$(document).ready(function(){
 		console.log('Document ready');
 
-		$('.tcon').click(function(){$(this).toggleClass('tcon-transform')});
-
+		$('.tcon').click(function(){
+			$('.string-search').fadeToggle();
+			$(this).toggleClass('tcon-transform');
+		});
+		$()
 
 		/*Mask phone init*/
 		$('.phone').mask('+7 (000) 000-00-00').click(function(){ if(!$(this).val()) $(this).val('+7 ('); });

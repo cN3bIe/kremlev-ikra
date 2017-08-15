@@ -1,0 +1,16 @@
+.breadcrumbs
+	padding: 20px 0
+	overflow: hidden
+	.list-bc
+		margin-left: - $bc-dash-area-width
+		.item-bc
+			display: inline-block
+			padding-left: $bc-dash-area-width
+			&::before
+				width: $bc-dash-width
+				border-top: $bc-dash-weight solid $color-text
+				left: ($bc-dash-area-width - $bc-dash-width)/2
+				top: 50%
+			.link-item-bc
+				line-height: 19px
+				font-size: 16px
