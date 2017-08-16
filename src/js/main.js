@@ -175,7 +175,42 @@ var log = console.log;
 				$('.iziModal').iziModal('open');
 			});
 		}
-	});
+
+		var cardItemTemplate = function(_){
+			var clone = $('#template .item-card').clone();
+			clone.attr('id',_.id);
+			clone.find('.img').css({'background-image':_.img});
+			clone.find('.title-card').text(_.title);
+			clone.find('.price').text(_.price + 'руб.');
+			clone.find('.old-price').text(_.oldprice + 'руб.');
+			clone.find('.fi-d').val(_.count);
+			return clone;
+		};
+		Basket.init(function(_){
+			_.getCard().forEach(function(el,id,arr){
+				$('.bl-card.another-card').append(cardItemTemplate(el));
+			});
+		});
+		var changeBasket = new Event('changeBasket');
+		document.addEventListener('changeBasket', function (e) {
+			log( Basket.getCount() );
+		}, false);
+		$('.btni.bascket').click(function(e){
+			var _ = $(this).parents('.item-card');
+			var el = {
+				id:_.attr('id'),
+				title:_.find('.title-card').text(),
+				img:_.find('.img').css('background-image').replace(/url\(\"|\"\)/gi,''),
+				count:1,
+				price:_.find('.price').text(),
+				oldprice:_.find('.old-price').text()
+			};
+			Basket.addCard(el);
+			$('.bl-card.current-card').html(cardItemTemplate(el));
+			document.dispatchEvent(changeBasket);
+		});
+
+	}); /*end document.ready*/
 
 
 

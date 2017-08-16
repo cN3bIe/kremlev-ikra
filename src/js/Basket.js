@@ -12,17 +12,9 @@ console.log('Include Basket.js');
 	}
 }(this || window, function () {
 	'use strict';
-	var Basket = {};
-	var Card = function(id,name,img,count,price,oldprice){
-		if(id instanceof Object) Object.assign(this, id);
-		else{
-			this.id = id;
-			this.name = name || 'Без имени';
-			this.img = img || '/img/none.jpg';
-			this.count = parseInt(count) || 1;
-			this.price = parseInt(price) || 1;
-			this.oldprice = parseInt(oldprice) || 0;
-		}
+	var _ = {};
+	var Card = function(obj){
+		Object.assign(this, obj);
 	};
 	Card.prototype.getTotal = function(){
 		return this.price * this.count;
@@ -32,30 +24,62 @@ console.log('Include Basket.js');
 		get: function(name){ return JSON.parse( localStorage.getItem(name) ); },
 		clear: function(){ localStorage.clear(); }
 	};
-	Basket.card = [];
-	Basket.total = 0;
-	Basket.count = 0;
-	Basket.init = function(){
+	_.clean = function(){
+		this.card = [];
+		this.total = 0;
+		this.count = 0;
+	};
+	_.init = function(callback){
 		console.log('Basket init');
-		log(LS.get('Basket'));
+		this.clean();
 		if(LS.get('Basket')){
 			Object.assign( Basket,LS.get('Basket') );
-			Basket.card.forEach(function(el,index,arr){arr[index] = new Card(el);});
+			_.card.forEach(function(el,index,arr){arr[index] = new Card(el);});
 		}else this.change();
+		if(callback) callback.call(_,_);
 	};
-	Basket.getCard = function(id_card){
+	_.nobj = function(obj,title,img,count,price,oldprice){
+		if(obj instanceof Object) return {
+			id: parseInt(obj.id) || 0,
+			title: obj.title || 'Без имени',
+			img: obj.img || '',
+			count: parseInt(obj.count) || 0,
+			price: parseInt(obj.price) || 0,
+			oldprice: parseInt(obj.oldprice) || 0
+		};
+		else return {
+			id: parseInt(obj) || 0,
+			title: title || 'Без имени',
+			img: img || '',
+			count: parseInt(count) || 0,
+			price: parseInt(price) || 0,
+			oldprice: parseInt(oldprice) || 0
+		};
+	};
+	_.getCard = function(id_card){
 		if(id_card) return this.card.filter(function(el){return el.id === id_card}).shift();
 		else return this.card;
 	};
-	Basket.getTotal = function(){return this.total;};
-	Basket.change = function(){
+	_.getCount = function(){return this.count;};
+	_.getTotal = function(){return this.total;};
+	_.change = function(){
 		LS.set('Basket',{
 			count: this.changeCount(),
 			total: this.changeTotal(),
 			card: this.card
 		});
 	};
-	Basket.changeTotal = function(){
+	_.changeCount = function(){
+		switch( this.card.length ){
+			case 0: return 0;
+			case 1: return this.count = this.card[0].count;
+			default: return (this.count = this.card.reduce( function( sum, el ){
+				sum = parseInt( sum )? sum: sum.count;
+				return sum + el.count;
+			}));
+		}
+	};
+	_.changeTotal = function(){
 		switch( this.card.length ){
 			case 0: return 0;
 			case 1: return this.total = this.card[0].getTotal();
@@ -65,47 +89,32 @@ console.log('Include Basket.js');
 			}));
 		}
 	};
-	Basket.changeCount = function(){
-		switch( this.card.length ){
-			case 0: return 0;
-			case 1:return this.total = this.card[0].count;
-			default: return (this.total = this.card.reduce( function( sum, el ){
-				sum = parseInt( sum )? sum: sum.count;
-				return sum + el.count;
-			}));
-		}
-	};
-	Basket.addCard = function(id,name,img,count,price,oldprice){
-		this.card.push(new Card(id,name,img,count,price,oldprice));
+	_.addCard = function(){
+		var obj = this.nobj.apply(this,arguments);
+		if( this.card.length && this.card.some( function(e){ return e.id === obj.id} ) ) return ( log('Don\'t add!'), !1);
+		this.card.push(new Card(obj));
 		this.change();
-		return this.card[id];
+		return this.card.slice(-1);
 	};
-	Basket.changeCard = function(id,count){
+	_.changeCard = function(_id,count){
+		if( !_id && !count) return !1;
+		var ret;
+		this.card.forEach(function(el,ind,arr){
+			if( el.id === _id ) (ret = arr[ind]).count = count;
+		});
 		this.change();
-		return (this.card[id].count = count);
+		return ret;
 	};
-	Basket.removeCard = function(id_card){
+	_.removeCard = function(id_card){
 		this.card = this.card.filter(function(el,index,arr){
 			return el.id !== parseInt(id_card);
 		});
 		this.change();
 	};
-	Basket.clear = function(){
+	_.clear = function(){
 		LS.clear();
+		this.clean();
+		this.change();
 	};
-	return Basket;
+	return _;
 }));
-Basket.init();
-
-/*
-Basket.addCard(13,'Икра стерляди Горкунов, 50 г','/img/product-1.png',2,'1800 руб.');
-Basket.addCard(15,'Икра стерляди Горкунов, 50 г','/img/product-1.png',2,'1800 руб.');
-Basket.addCard(16,'Икра стерляди Горкунов, 50 г','/img/product-1.png',2,'1800 руб.');
-log(Basket.getTotal());
-log(Basket.getCard());
-Basket.removeCard(15);
-log(Basket.getCard());
-log(Basket.getTotal());
-Basket.removeCard(16);
-log(Basket.getCard());
-log(Basket.getTotal());*/
