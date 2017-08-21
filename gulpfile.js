@@ -16,12 +16,12 @@ del = require( 'del' );
 
 gulp.task( 'sass',()=>{
 	return gulp.src('src/sass/**/*.+(sass|scss)')
-		.pipe(sourcemaps.init())
-		.pipe( sass({ outputStyle: 'compact' }) ).on( 'error', sass.logError )
+		// .pipe(sourcemaps.init())
+		.pipe( sass({ outputStyle: 'compressed' }) ).on( 'error', sass.logError )
 		/*.pipe( uncss({
 			html: ['src/**//*.html']
 		}) )*/
-		.pipe(sourcemaps.write())
+		// .pipe(sourcemaps.write())
 		.pipe( gulp.dest('src/css') )
 		.pipe( browserSync.reload({ stream:!0 }) );
 })
@@ -50,10 +50,10 @@ gulp.task( 'sass',()=>{
 	return gulp.src([
 			'src/libs/custom/sass/custom.sass'
 		])
-		.pipe(sourcemaps.init())
-		.pipe( sass({ outputStyle: 'compact' }) ).on( 'error', sass.logError )
+		// .pipe(sourcemaps.init())
+		.pipe( sass({ outputStyle: 'compressed' }) ).on( 'error', sass.logError )
 		.pipe( rename({'suffix':'.min'}) )
-		.pipe(sourcemaps.write())
+		// .pipe(sourcemaps.write())
 		.pipe( gulp.dest( 'src/libs/custom/dist' ) );
 })
 
@@ -64,10 +64,10 @@ gulp.task( 'sass',()=>{
 			'src/libs/material-design-lite/material.min.js',
 			'src/libs/custom/js/waves/waves.js',
 		])
-		.pipe(sourcemaps.init())
+		// .pipe(sourcemaps.init())
 		.pipe( concat( 'custom.min.js') )
 		.pipe( uglifyjs() )
-		.pipe(sourcemaps.write())
+		// .pipe(sourcemaps.write())
 		.pipe( gulp.dest( 'src/libs/custom/dist' ) );
 })
 
@@ -79,13 +79,14 @@ gulp.task( 'sass',()=>{
 		'node_modules/jquery-mask-plugin/dist/jquery.mask.min.js',
 		'node_modules/jquery-lazy/jquery.lazy.min.js',
 		'node_modules/izimodal/js/iziModal.min.js',
+		'src/libs/fotorama-4.6.4/fotorama.js',
 		'src/libs/social-share-kit-1.0.14/dist/js/social-share-kit.min.js',
 		'src/libs/custom/dist/custom.min.js',
 		] )
-		.pipe(sourcemaps.init())
+		// .pipe(sourcemaps.init())
 		.pipe( concat( 'libs.min.js') )
 		.pipe( uglifyjs() )
-		.pipe(sourcemaps.write())
+		// .pipe(sourcemaps.write())
 		.pipe( gulp.dest( 'src/js' ) );
 })
 
@@ -93,29 +94,37 @@ gulp.task( 'sass',()=>{
 
 .task( 'libs-css',['custom-libs-sass'],()=>{
 	return gulp.src([
-			'src/libs/social-share-kit-1.0.14/dist/css/social-share-kit.css',
 			'node_modules/izimodal/css/iziModal.min.css',
+			'src/libs/fotorama-4.6.4/fotorama.css',
+			'src/libs/social-share-kit-1.0.14/dist/css/social-share-kit.css',
 			'src/libs/custom/dist/custom.min.css',
 			'src/libs/material-design-lite/material.min.css',
 		])
-		.pipe(sourcemaps.init())
+		// .pipe(sourcemaps.init())
 		.pipe( concat( 'libs.min.css' ) )
 		.pipe( cssnano() )
-		.pipe(sourcemaps.write())
+		// .pipe(sourcemaps.write())
 		.pipe( gulp.dest( 'src/css') );
 })
 
 
-.task( 'fonts-libs',()=>{
+.task( 'libs-fonts',()=>{
 	return gulp.src([
 			'src/libs/social-share-kit-1.0.14/dist/fonts/**/*'
 		])
 		.pipe( gulp.dest( 'src/fonts' ) );
 })
 
+.task( 'libs-img',()=>{
+	return gulp.src([
+			'src/libs/fotorama-4.6.4/**/*.+(jpg|png|gif)'
+		])
+		.pipe( gulp.dest( 'src/css' ) );
+})
 
 
-.task( 'libs',[ 'libs-css','libs-js','fonts-libs' ])
+
+.task( 'libs',[ 'libs-css','libs-js','libs-fonts','libs-img' ])
 
 
 .task( 'clean',()=>{

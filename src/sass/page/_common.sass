@@ -18,11 +18,11 @@
 			&:last-of-type
 				border-right: 0
 			.bl-notice
-				min-height: 90px
+				min-height: 40px
 			.img
 				width: 100%
-				max-width: 250px
-				min-height: 250px
+				max-width: 100%
+				min-height: 290px
 				margin: auto
 			.bl-info
 				margin-top: 27px
@@ -74,14 +74,28 @@
 				.bookmark
 				.bascket
 
+.row .col.l4.ph40
+	padding: 0 10px
+	&:first-of-type
+		padding: 0 20px 0 0
+	&:last-of-type
+		padding: 0 0 0 20px
+@media #{$medium-and-down}
+	.row .col.l4.ph40
+		&,
+		&:first-of-type,
+		&:last-of-type
+			padding: 0 10px
+
 /*blog*/
 .section
 	.wr-blog
 		.item-blog
 			margin-bottom: 10px
 			.img
+				margin: 0
 				margin-right: 10px
-				max-width: 350px
+				max-width: 100%
 				min-height: 230px
 			.bl-info
 				.title-blog
@@ -140,6 +154,8 @@
 			&.collaborate
 				width: auto
 				.a-d
+					position: relative
+					z-index: 2
 					line-height: 24px
 					font-size: 16px
 					text-align: left

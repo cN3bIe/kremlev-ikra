@@ -1,0 +1,98 @@
+.fotorama__wrap
+	margin: auto
+.fotorama__wrap--css3 .fotorama__fullscreen-icon:not(:focus)
+	background: transparent
+	width: 80%
+	height: 100%
+	left: 0
+	right: 0
+	margin: auto
+
+.fotorama--fullscreen
+	background: rgba(0,0,0,.83)
+	.fotorama__nav,
+	.fotorama__stage
+		background: transparent
+	.fotorama__wrap--css3 .fotorama__fullscreen-icon:not(:focus)
+		width: 100%
+		height: 100%
+		left: auto
+		right: 0
+		margin: 0
+		background: url('../img/design/close.png') 95% 1% no-repeat
+		-webkit-background-size: contain
+		background-size: contain
+		background-size: 40px
+	.fotorama__thumb
+		border: 0
+
+.fotorama__wrap--css3
+	.fotorama__arr:not(:focus),
+	.fotorama__arr:not(:focus)
+		z-index: 99999
+.fotorama__thumb
+	background-color: transparent
+	border: $border-line
+.fotorama__thumb-border
+	border-color: $color-primary
+
+.owl-carousel .owl-stage-outer
+	overflow: visible
+
+.fotorama__arr
+	margin: auto
+	top: 0
+	bottom: 0
+	height: 100%
+	background: transparent
+	opacity: .35
+	transition: opacity .35s,transform .175s,-webkit-transform .175s
+	&:hover
+		opacity: 1
+	&:active
+		-webkit-transform: scale(.95)
+		-ms-transform: scale(.95)
+		transform: scale(.95)
+	&:after,
+	&:before
+		position: absolute
+		top: 50%
+		left: 50%
+		width: 2px
+		height: 30px
+		background-color: $color-white
+		transition: color .35s
+		content: ''
+	&:after
+		-webkit-transform-origin: 50% 0%
+		-ms-transform-origin: 50% 0%
+		transform-origin: 50% 0%
+		margin-top: 15px
+	&:before
+		-webkit-transform-origin: 50% 100%
+		-ms-transform-origin: 50% 100%
+		transform-origin: 50% 100%
+		margin-top: -15px
+	&.fotorama__arr--prev:after,
+	&.fotorama__arr--prev:before
+		margin-left: -10px
+
+.fotorama__arr--next
+	&:after,
+	&:before
+		margin-left: 10px
+
+.fotorama__arr--next:before,
+.fotorama__arr--prev:after
+	-webkit-transform: rotate(-45deg)
+	-ms-transform: rotate(-45deg)
+	transform: rotate(-45deg)
+
+.fotorama__arr--next:after,
+.fotorama__arr--prev:before
+	-webkit-transform: rotate(45deg)
+	-ms-transform: rotate(45deg)
+	transform: rotate(45deg)
+
+.fotorama__arr--disabled
+	opacity: 0

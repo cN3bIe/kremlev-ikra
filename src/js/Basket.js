@@ -60,6 +60,7 @@ console.log('Include Basket.js');
 		if(id_card) return this.card.filter(function(el){return el.id === id_card}).shift();
 		else return this.card;
 	};
+	_.getCountCard = function(){return this.card.length;};
 	_.getCount = function(){return this.count;};
 	_.getTotal = function(){return this.total;};
 	_.change = function(){
@@ -91,7 +92,10 @@ console.log('Include Basket.js');
 	};
 	_.addCard = function(){
 		var obj = this.nobj.apply(this,arguments);
-		if( this.card.length && this.card.some( function(e){ return e.id === obj.id} ) ) return ( log('Don\'t add!'), !1);
+		if( this.card.length && this.card.some( function(e){ return e.id === obj.id} ) ){
+			this.changeCard(obj.id, obj.count);
+			return !1;
+		}
 		this.card.push(new Card(obj));
 		this.change();
 		return this.card.slice(-1);

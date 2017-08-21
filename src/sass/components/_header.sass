@@ -7,6 +7,7 @@
 		margin-left: 155px
 		.top-line
 			height: $header-top-line-height
+			margin: 0
 			position: relative
 			.bl-city
 				position: relative
@@ -20,7 +21,7 @@
 					weight: 400
 				#city
 					cursor: pointer
-					background: url('/img/design/arrow-dark-down.png') right center no-repeat
+					background: url('../img/design/arrow-dark-down.png') right center no-repeat
 					padding-right: 30px
 					min-width: 185px
 					display: inline-block
@@ -111,19 +112,20 @@
 								&::before
 									left: 0
 									right: 0
-									height: 2px
+									height: 1px
 								&::after
 									left: 0
 									right: -10px
 									width: 23px
 									height: 23px
+									border-width: 1px
 							&.tcon-transform
 								.tcon-search__item
 									width: 35px
 									height: 27px
 									&::after
 										right: 0
-										height: 2px
+										height: 1px
 										width: 100%
 									&::before
 										width: 100%
@@ -135,7 +137,7 @@
 					line-height: 27px
 					margin-left: 30px
 		.nav-line
-			height: 75px
+			min-height: 75px
 			.wr-menu
 				height: 100%
 				.list-menu
@@ -151,6 +153,8 @@
 							line-height: 100%
 							font-size: 16px
 					.catalog
+						min-height: $header-nav-line-height
+						height: auto
 						width: $nav-catalog-width
 						position: relative
 						background-color: #41516B
@@ -160,8 +164,6 @@
 							text-align: center
 						.lvl-1 .a-d
 							font-size: 14px
-						&:hover .wr-catalog
-							display: block
 						.wr-catalog
 							box-sizing: content-box
 							background-color: #41516B
@@ -186,28 +188,50 @@
 										margin-top: 20px
 				.wr-lvl-1
 					margin: 0 0 0 $nav-catalog-width
-					.item-menu
+					.wrp-item-menu
 						border-top: $border-line
-						width: 20%
-						text-align: right
-						height: $header-nav-line-height - $border-weight
-						line-height: $header-nav-line-height - $border-weight
+						.item-menu
+							width: 20%
+							text-align: right
+							height: $header-nav-line-height - $border-weight
+							line-height: $header-nav-line-height - $border-weight
 
 @media #{$medium-and-down}
 	.main-header
 		.bl-logo
+			display: none
 		.bl-menu
+			margin-left: 0
 			.top-line
+				height: auto
 				.bl-city
+					float: right
 					#city
 					.bl-search-city
+						left: 0
+						right: 0
 						.wr-fi
 							.fi-d
 						.list-city
 							.item-city
 								&:hover
 				.bl-wr
+					clear: both
 					.search
+						.string-search
+							right: 0
+							.fi-d
+						.wr-fetch
+							.item-card
+								.bl-notice
+								.img
+								.bl-info
+									.title-card
+									.price-card
+										.old-price
+								.bl-action
+									.bookmark
+									.bascket
 					.bookmark
 					.bascket
 					.phone
@@ -217,18 +241,37 @@
 						.item-menu
 							.link-item-menu
 						.catalog
+							width: 100%
+							float: none
 							&, .a-d
 							.link-item-menu
-							.lvl-1 .a-d
-							&:hover .wr-catalog
+							.lvl-1
+								.a-d
+							&:hover
+								.wr-catalog
 							.wr-catalog
+								// display: block
+								width: 100%
+								box-sizing: border-box
+								position: relative
+								top: auto
+								left: auto
+								right: auto
+								bottom: auto
 								.list-catalog
 									.title-category
 										&:before
 									&.lvl-2
 										.a-d
 					.wr-lvl-1
-						.item-menu
+						margin: 0
+						.wrp-item-menu
+							.item-menu
+								border-bottom: $border-line
+								width: 100%
+								.link-item-menu
+									font-size: 26px
+									text-align: center
 @media #{$small-and-down}
 	.main-header
 		.bl-logo

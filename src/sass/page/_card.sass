@@ -1,9 +1,10 @@
 .section.card
+	background-color: $color-white
 	.main-info
-		.bl-photo
-			.main-photo
-			.wr-thumbnail
-			.item-thumbnail
+		.bl-gallery
+			width: 100%
+			margin: auto
+			.item-img-gallery
 		.bl-order
 			padding: 28px 21px 56px 49px
 			border: $border-line
@@ -28,12 +29,18 @@
 					size: 18px
 					weight: 400
 				margin-bottom: 12px
-			.price
+			.price,
+			.oldprice
 				margin-bottom: 47px
 				line-height: 43px
 				font:
 					size: 36px
 					weight: 700
+			.oldprice
+				color: $color-text-gray
+				text-decoration: line-through
+				margin-top: -40px
+				margin-bottom: 12px
 			.bl-count
 				max-width: $card-order-width
 				margin: 0 0 12px
@@ -41,6 +48,7 @@
 					width: 60px
 					height: 60px
 					line-height: 60px
+					transition: .3s ease
 					&.reduce-count
 					&.count
 						width: 100%
@@ -51,6 +59,11 @@
 							text-align: center
 					&.enlarge-count
 						float: right
+					&.reduce-count,
+					&.enlarge-count
+						&:hover
+							background-color: $color-primary
+							color: $color-white
 			.wr-btn
 				height: $btn-height * 2 + 12px + $brick-border-weight * 4 + 15px
 				overflow: hidden
@@ -111,9 +124,11 @@
 					.item-sert
 						.img
 							min-height: 309px
-							min-width: 223px
+							max-width: 223px
+							width: 223px
 				&.v2
 					.item-sert
 						.img
 							min-height: 224px
-							min-width: 308px
+							max-width: 308px
+							width: 308px
