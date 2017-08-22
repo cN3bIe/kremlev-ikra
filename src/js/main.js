@@ -64,6 +64,20 @@ var log = console.log;
 			$(this).toggleClass('tcon-transform');
 		});
 
+
+		/*Change hit on sale if they are together */
+		var _bn = $('.bl-notice');
+		if( _bn.length ){
+			var _bn_bh = _bn.find('.badget-hit');
+			var _bn_bs = _bn.find('.badget-sale');
+			if( _bn_bh.length && _bn_bs.length ){
+				_bn_bs.hide();
+				setInterval(function(){
+					_bn_bh.add(_bn_bs).fadeToggle();
+				},2000);
+			}
+		}
+
 		/*Mask phone init*/
 		$('.phone').mask('+7 (000) 000-00-00').click(function(){ if(!$(this).val()) $(this).val('+7 ('); });
 
