@@ -52,10 +52,15 @@ var log = console.log;
 			// $(this).toggleClass('tcon-transform');
 		});
 
+		$('.btn-filter').click(function(){
+			$('.form-filter').stop().slideToggle();
+		});
+
+
 
 		/*Search show/hide string*/
 		$('.search-btn').click(function(){
-			$('.string-search').fadeToggle();
+			$('.string-search').stop().fadeToggle();
 			$(this).toggleClass('tcon-transform');
 		});
 
@@ -96,10 +101,10 @@ var log = console.log;
 		/*form-filter change init*/
 		$('.form-filter input[type="checkbox"]').change(function(){
 			var _=$(this);
-			$('.filter-popup').fadeOut(function(){
+			$('.filter-popup').stop().fadeOut(function(){
 				$(this).css({
 					'top': _.parents('.mdl-checkbox').position().top
-				}).fadeIn();
+				}).stop().fadeIn();
 			});
 		});
 
@@ -159,7 +164,7 @@ var log = console.log;
 
 		/*item-faq init*/
 		$('.item-faq').click(function(){
-			$(this).toggleClass('active').find('.answer').slideToggle();
+			$(this).toggleClass('active').find('.answer').stop().slideToggle();
 		});
 
 
@@ -184,7 +189,7 @@ var log = console.log;
 			var _=$(target).parents('.bl-search-city');
 			var citySelect = $('.bl-search-city').first()
 			if( !_.length && citySelect.hasClass('active') ){
-				citySelect.fadeOut(function(){ $(this).removeClass('active')});
+				citySelect.stop().fadeOut(function(){ $(this).removeClass('active')});
 			}
 		});
 
@@ -224,15 +229,15 @@ var log = console.log;
 			_.getCard().forEach(function(el,id,arr){
 				$('.bl-card.another-card').append(cardItemTemplate(el));
 			});
-			if( !!_.getCountCard() ) basketBadget.fadeIn().text( _.getCountCard() );
-			else basketBadget.fadeOut();
+			if( !!_.getCountCard() ) basketBadget.stop().fadeIn().text( _.getCountCard() );
+			else basketBadget.stop().fadeOut();
 		});
 
 		// New events changeBasket
 		var changeBasket = new Event('changeBasket');
 		document.addEventListener('changeBasket', function (e) {
-			if( !!Basket.getCountCard() ) basketBadget.fadeIn().text( Basket.getCountCard() );
-			else basketBadget.fadeOut();
+			if( !!Basket.getCountCard() ) basketBadget.stop().fadeIn().text( Basket.getCountCard() );
+			else basketBadget.stop().fadeOut();
 		}, !1);
 
 		$('.btni.bascket').click(function(e){
@@ -251,8 +256,8 @@ var log = console.log;
 			}else{
 				$('.bl-card.another-card').find('#'+el.id);
 			}
-			if( $('.bl-card.another-card').children().length ) $('.title-another-card').fadeIn();
-			else $('.title-another-card').fadeOut();
+			if( $('.bl-card.another-card').children().length ) $('.title-another-card').stop().fadeIn();
+			else $('.title-another-card').stop().fadeOut();
 			document.dispatchEvent(changeBasket);
 		});
 		$('#add-bascket').click(function(e){

@@ -1,7 +1,7 @@
 .section.clients
 	.title
 	.wr-control-tab
-		max-width: 300px
+		// max-width: 300px
 		.item-control-tab
 			line-height: 22px
 			font-size: 18px
@@ -101,3 +101,59 @@
 				line-height: 19px
 				font-size: 16px
 				margin-top: 20px
+
+@media #{$small-and-down}
+	.section.clients
+		.title
+		.wr-control-tab
+			.item-control-tab
+				padding: 15px
+				font-size: 23px
+				&.active
+				&.active,
+				&:last-of-type
+		.wr-tabs
+			padding: 0
+			.title-tabs
+			.item-tab
+				.ul-d
+					.li-d
+						.name
+						.text
+
+				&.active
+			.wr-sert
+				.item-sert
+					.img
+				&.v1
+					.item-sert
+						.img
+				&.v2
+					.item-sert
+						.img
+		#delivery
+			.wr-dev
+				.item-dev
+					.img
+					.name
+						font-size: 24px
+					.text
+						font-size: 18px
+			.bl-text
+				.title-text
+					font-size: 24px
+				.text
+					font-size: 18px
+		#faq
+			.wr-faq
+				.item-faq
+					.question
+						&:before
+					.answer
+					&.active
+						.question
+							&:before
+		#pay
+			.title-pay
+			.wr-pay
+				.item-pay

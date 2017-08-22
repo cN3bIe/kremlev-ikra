@@ -84,3 +84,50 @@
 							font-size: 18px
 					.bl-action
 						margin-top: 20px
+
+// @media #{$medium-and-down}
+@media #{$small-and-down}
+	.section.catalog.catalog-page
+		.title
+		.wr-catalog
+			.wr-filter
+				padding-top: 0
+				.btn-filter
+					display: block
+					line-height: 36px
+					font-size: 31px
+					padding: 20px 50px
+					border-bottom: $border-line
+					margin-bottom: 30px
+					background: url('#{$path-design}arrow-dark-down.png') 20px center no-repeat
+				.form-filter
+					display: none
+					margin: 0 0 0 50px
+					.reset
+						.close.v1
+					.filter-popup
+						.bl-count,
+						.bl-empty,
+						.btn
+						.bl-count,
+						.btn
+						.bl-empty
+					.bl-filter
+						.title-filter
+						.mdl-checkbox
+							.mdl-checkbox__label
+							.mdl-checkbox__box-outline,
+							.mdl-checkbox__focus-helper
+							.mdl-checkbox__ripple-container
+								.mdl-ripple
+							&.is-checked
+								.mdl-checkbox__tick-outline
+			.wr-card
+				.row
+					.item-card
+						.bl-notice
+						.img
+						.bl-info
+							.title-card
+							.price-card
+						.bl-action

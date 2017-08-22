@@ -87,11 +87,12 @@ h6.title
 	&.bascket
 		background-image: url("#{$path-design}basket.svg")
 	&.down-arrow
-		background-image: url("#{$path-design}down-arrow.png")
+		background-image: url("#{$path-design}arrow-down.png")
 		width: 16px
 		height: 16px
+		vertical-align: sub
 	&.down-arrow-fill
-		background-image: url("#{$path-design}down-arrow-fill.png")
+		background-image: url("#{$path-design}arrow-dark-down.png")
 		width: 16px
 		height: 16px
 	&.mastercard
@@ -310,7 +311,8 @@ ul.ul-d li.li-d
 	position: fixed
 	bottom: 5%
 	right: 5%
-	background-color: $color-white
+	background: $color-white center center no-repeat
+	background-image: url('#{$path-design}arrow-dark-up.png')
 	z-index: 999999
 	.fa-angle-up
 		color: #59595B
