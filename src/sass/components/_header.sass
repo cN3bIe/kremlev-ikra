@@ -55,6 +55,8 @@
 				float: right
 				height: 100%
 				padding: 21px 0
+				.menu-btn
+					display: none
 				.search
 					display: inline-block
 					height: 27px
@@ -198,13 +200,18 @@
 							height: $header-nav-line-height - $border-weight
 							line-height: $header-nav-line-height - $border-weight
 
+.tcon-menu__lines
+	&,
+	&:after,
+	&:before
+		height: 3px
+
 @media #{$medium-and-down}
 	.main-header
 		.bl-logo
 		.bl-menu
 			.top-line
 				height: auto
-				padding-right: 40px
 				.bl-city
 					float: right
 					#city
@@ -219,9 +226,16 @@
 				.bl-wr
 					width: 100%
 					text-align: right
+					.menu-btn
+						display: block
+						float: left
+						top: -10px
+						position: relative
 					.search
 						.string-search
-							right: 40px
+							border-top: $border-line
+							border-bottom: $border-line
+							right: 0
 							top: 50%
 							bottom: 0
 							.fi-d
@@ -251,6 +265,7 @@
 				left: 100%
 				width: 100%
 				transition: .3s ease
+				z-index: 4
 				.wr-menu
 					.list-menu
 						.item-menu
@@ -294,6 +309,7 @@
 			display: none
 		.bl-menu
 			.top-line
+				margin-left: 0
 				.bl-city
 					#city
 					.bl-search-city

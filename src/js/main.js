@@ -36,12 +36,16 @@ var log = console.log;
 			$(this).find('.wr-catalog').stop().fadeOut();
 		});
 
-
-		$('.tcon').click(function(){
+		/*Search show/hide string*/
+		$('.search-btn').click(function(){
 			$('.string-search').fadeToggle();
 			$(this).toggleClass('tcon-transform');
 		});
-		$()
+		/*Menu show/hide*/
+		$('.menu-btn').click(function(){
+			$('.nav-line').animate({'left':0});
+			$(this).toggleClass('tcon-transform');
+		});
 
 		/*Mask phone init*/
 		$('.phone').mask('+7 (000) 000-00-00').click(function(){ if(!$(this).val()) $(this).val('+7 ('); });
