@@ -68,14 +68,17 @@ var log = console.log;
 		/*Change hit on sale if they are together */
 		var _bn = $('.bl-notice');
 		if( _bn.length ){
-			var _bn_bh = _bn.find('.badget-hit');
-			var _bn_bs = _bn.find('.badget-sale');
-			if( _bn_bh.length && _bn_bs.length ){
-				_bn_bs.hide();
-				setInterval(function(){
-					_bn_bh.add(_bn_bs).fadeToggle();
-				},2000);
-			}
+			_bn.each(function(index,el){
+				var _bn = $(el);
+				var _bn_bh = _bn.find('.badget-hit');
+				var _bn_bs = _bn.find('.badget-sale');
+				if( _bn_bh.length && _bn_bs.length ){
+					_bn_bs.hide();
+					setInterval(function(){
+						_bn_bh.add(_bn_bs).fadeToggle();
+					},2000);
+				}
+			});
 		}
 
 		/*Mask phone init*/
