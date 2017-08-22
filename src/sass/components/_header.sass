@@ -4,10 +4,10 @@
 		max-width: $logo-width
 		min-height: $logo-height
 	.bl-menu
-		margin-left: 155px
 		.top-line
 			height: $header-top-line-height
 			margin: 0
+			margin-left: 155px
 			position: relative
 			.bl-city
 				position: relative
@@ -137,6 +137,7 @@
 					line-height: 27px
 					margin-left: 30px
 		.nav-line
+			margin-left: 155px
 			min-height: 75px
 			.wr-menu
 				height: 100%
@@ -199,11 +200,10 @@
 @media #{$medium-and-down}
 	.main-header
 		.bl-logo
-			display: none
 		.bl-menu
-			margin-left: 0
 			.top-line
 				height: auto
+				padding-right: 40px
 				.bl-city
 					float: right
 					#city
@@ -216,10 +216,13 @@
 							.item-city
 								&:hover
 				.bl-wr
-					clear: both
+					width: 100%
+					text-align: right
+					// clear: both
 					.search
 						.string-search
-							right: 0
+							right: 40px
+							bottom: auto
 							.fi-d
 						.wr-fetch
 							.item-card
@@ -236,6 +239,17 @@
 					.bascket
 					.phone
 			.nav-line
+				background-color: $color-white
+				margin-left: 0
+				height: 100%
+				position: fixed
+				overflow: auto
+				padding: 0
+				top: 0
+				bottom: 0
+				left: 100%
+				width: 100%
+				transition: .3s ease
 				.wr-menu
 					.list-menu
 						.item-menu
@@ -245,6 +259,7 @@
 							float: none
 							&, .a-d
 							.link-item-menu
+								font-size: 26px
 							.lvl-1
 								.a-d
 							&:hover
