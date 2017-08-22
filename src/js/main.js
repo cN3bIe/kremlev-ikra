@@ -38,8 +38,8 @@ var log = console.log;
 			if( _w.width()>992 ) $(this).find('.wr-catalog').stop().fadeOut();
 		})
 		$('.item-menu.catalog>.link-item-menu').click(function(e){
-			e.preventDefault();
 			if( _w.width()< 992){
+				e.preventDefault();
 				$(this).parents('.catalog').find('.wr-catalog').slideToggle();
 			}
 		});
@@ -124,11 +124,6 @@ var log = console.log;
 				}).stop().fadeIn();
 			});
 		});*/
-/*var function(v,arr){
-	return arr.map(function(_,id,arr){
-		return _+v;
-	});
-}*/
 		console.log('Isotop init');
 		if( $('.catalog.catalog-page').length ){
 			var $grid = $('.wr-card').isotope({
@@ -160,7 +155,6 @@ var log = console.log;
 							return new_ar;
 						}
 					},[]).join();
-				log(_filter_str);
 				$grid.isotope({
 					filter: _filter_str
 				});
@@ -204,15 +198,15 @@ var log = console.log;
 
 		/*Pay One Click init*/
 		$('#pay-one-click').click(function(){
-			$(this).add('#add-bascket,.bookmark').fadeOut(function(){
+			$(this).add('#add-bascket,.main-info .bookmark').stop().fadeOut(function(){
 				$('#input-phone,#make-order').stop().fadeIn(function(){});
 				$('.close.v1').css('display','inline-block');
 			});
 		});
 		$('.bl-order .close.v1').click(function(){
-			$(this).add('#input-phone,#make-order').fadeOut(function(){
+			$(this).add('#input-phone,#make-order').stop().fadeOut(function(){
 				$('#pay-one-click,#add-bascket').stop().fadeIn();
-				$('.bookmark').css('display','inline-block');
+				$('.main-info .bookmark').css('display','inline-block');
 			});
 		});
 
