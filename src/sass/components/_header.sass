@@ -60,6 +60,7 @@
 					height: 27px
 					vertical-align: bottom
 					.string-search
+						z-index: 4
 						position: absolute
 						top: 0
 						left: 0
@@ -218,11 +219,11 @@
 				.bl-wr
 					width: 100%
 					text-align: right
-					// clear: both
 					.search
 						.string-search
 							right: 40px
-							bottom: auto
+							top: 50%
+							bottom: 0
 							.fi-d
 						.wr-fetch
 							.item-card
@@ -290,6 +291,7 @@
 @media #{$small-and-down}
 	.main-header
 		.bl-logo
+			display: none
 		.bl-menu
 			.top-line
 				.bl-city
