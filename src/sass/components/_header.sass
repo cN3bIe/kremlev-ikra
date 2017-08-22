@@ -1,5 +1,6 @@
 .main-header
 	.bl-logo
+		width: 100%
 		float: left
 		max-width: $logo-width
 		min-height: $logo-height
@@ -111,10 +112,12 @@
 							.tcon-search__item
 								transform: rotate(-135deg)
 								&::before
+									background-color: $color-gray
 									left: 0
 									right: 0
 									height: 1px
 								&::after
+									border-color: $color-gray
 									left: 0
 									right: -10px
 									width: 23px
@@ -203,6 +206,7 @@
 	&:after,
 	&:before
 		height: 3px
+		background-color: $color-primary
 
 @media #{$medium-and-down}
 	.main-header
