@@ -79,6 +79,7 @@ gulp.task( 'sass',()=>{
 		'node_modules/jquery-mask-plugin/dist/jquery.mask.min.js',
 		'node_modules/jquery-lazy/jquery.lazy.min.js',
 		'node_modules/izimodal/js/iziModal.min.js',
+		'node_modules/isotope-layout/dist/isotope.pkgd.min.js',
 		'src/libs/fotorama-4.6.4/fotorama.js',
 		'src/libs/social-share-kit-1.0.14/dist/js/social-share-kit.min.js',
 		'src/libs/custom/dist/custom.min.js',
