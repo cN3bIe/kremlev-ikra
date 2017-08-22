@@ -45,11 +45,11 @@ var log = console.log;
 		});
 		$('.nav-line .close.v1').click(function(){
 			$(this).parents('.nav-line').css({'left':'100%'});
-			$('.menu-btn').toggleClass('tcon-transform');
+			// $('.menu-btn').toggleClass('tcon-transform');
 		});
 		$('.menu-btn').click(function(){
 			$('.nav-line').css({'left':0});
-			$(this).toggleClass('tcon-transform');
+			// $(this).toggleClass('tcon-transform');
 		});
 
 
