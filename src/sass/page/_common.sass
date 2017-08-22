@@ -1,6 +1,6 @@
 
 
-
+$notice-badget-side: 78px
 /*catalog*/
 .wr-card
 	overflow: hidden
@@ -19,6 +19,21 @@
 				border-right: 0
 			.bl-notice
 				min-height: 40px
+				position: relative
+				.badget
+					display: block
+					height: $notice-badget-side
+					width: $notice-badget-side
+					top: 0
+					right: 0
+					left: auto
+					bottom: auto
+					padding: ( $notice-badget-side - 34px ) /2 0
+					font-size: 14px
+					line-height: 17px
+					&.badget-hit
+						color: $color-white
+						background-color: $color-primary
 			.img
 				width: 100%
 				max-width: 100%
