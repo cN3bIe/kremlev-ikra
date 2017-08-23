@@ -85,9 +85,8 @@ console.log('Include Basket.js');
 			case 0: return 0;
 			case 1: return this.total = this.card[0].getTotal();
 			default: return (this.total = this.card.reduce( function( sum, el ){
-				sum = parseInt( sum )? sum: sum.getTotal();
 				return sum + el.getTotal();
-			}));
+			}),0);
 		}
 	};
 	_.addCard = function(){

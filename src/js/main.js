@@ -274,27 +274,42 @@ var log = console.log;
 
 
 
+		var btnInit = function(){
+			// Увеличивает счетчик товара на 1ед
+			$('.enlarge-count').click(function(e){
+				e.preventDefault();
+				var count = $(this).parents('.bl-count').find('.count .fi-d');
+				count.val( parseInt(count.val()) + 1);
+			});
+			// Уменьшает счетчик товара на 1ед
+			$('.reduce-count').click(function(e){
+				e.preventDefault();
+				var count = $(this).parents('.bl-count').find('.count .fi-d');
+				if( parseInt(count.val()) > 1 ) count.val( parseInt(count.val()) - 1);
+			});
+			// Удалить товар
+			$('.bl-del').click(function(){
+				var _ = $(this);
+				var _p = _.parents('.item-card').stop().fadeOut();
+				Basket.removeCard(_p.data('id'));
+				basketChange(_p.data('id'));
+				$('.total .sale .price').text( ( parseInt( $('.total .sale .price').text() ) - parseInt( _p.find('.sale').val() ) ) + ' руб.' );
+				$('.total .bl-total .price').text( ( parseInt( $('.total .bl-total .price').text() ) - parseInt( _p.find('.price').text() ) ) + ' руб.' );
+			});
+		};
+		btnInit();
+
 		if( $('.iziModal').length ){
 			console.log('iziModal init');
-			$('.iziModal').iziModal({width: 1100});
+			$('.iziModal').iziModal({
+				width: 1100,
+			});
 			$('.btni.basket').click(function(e){
 				e.preventDefault();
 				$('.iziModal').iziModal('open');
 			});
 		}
 
-		// Увеличивает счетчик товара на 1ед
-		$('.enlarge-count').click(function(e){
-			e.preventDefault();
-			var count = $(this).parents('.bl-count').find('.count .fi-d');
-			count.val( parseInt(count.val()) + 1);
-		});
-		// Уменьшает счетчик товара на 1ед
-		$('.reduce-count').click(function(e){
-			e.preventDefault();
-			var count = $(this).parents('.bl-count').find('.count .fi-d');
-			if( parseInt(count.val()) > 1 ) count.val( parseInt(count.val()) - 1);
-		});
 
 
 		var cardItemTemplate = function(_){
@@ -367,6 +382,7 @@ var log = console.log;
 			if( Basket.addCard(el) ){
 				$('.bl-card.another-card').append( $('.bl-card.current-card').find('.item-card') );
 				$('.bl-card.current-card').html(cardItemTemplate(el));
+				btnInit();
 			}else{
 				$('.bl-card.another-card').find('#'+el.id);
 			}
@@ -432,14 +448,6 @@ var log = console.log;
 			});
 		});
 
-		$('.bl-del').click(function(){
-			var _ = $(this);
-			var _p = _.parents('.item-card').stop().fadeOut();
-			Basket.removeCard(_p.data('id'));
-			basketChange(_p.data('id'));
-			$('.total .sale .price').text( ( parseInt( $('.total .sale .price').text() ) - parseInt( _p.find('.sale').val() ) ) + ' руб.' );
-			$('.total .bl-total .price').text( ( parseInt( $('.total .bl-total .price').text() ) - parseInt( _p.find('.price').text() ) ) + ' руб.' );
-		});
 
 
 	}); /*end document.ready*/
