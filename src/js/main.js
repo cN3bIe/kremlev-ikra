@@ -62,6 +62,7 @@ var log = console.log;
 		$('.search-btn').click(function(){
 			$('.string-search').stop().fadeToggle();
 			$(this).toggleClass('tcon-transform');
+			$('.wr-fetch').fadeToggle();
 		});
 
 
@@ -374,6 +375,15 @@ var log = console.log;
 			var _ = $(this);
 			$.get('/blog/ajax/').done(function(data){
 				$('.more-bl').append( data );
+			}).fail(function(data){
+				log('Fail');
+			});
+		});
+		// AJAX поиск товаров
+		$('.string-search input').change(function(e){
+			var _ = $(this).parents('.search').find('.wr-fetch');
+			$.get('/catalog/ajax/').done(function(data){
+				_.html( data );
 			}).fail(function(data){
 				log('Fail');
 			});
