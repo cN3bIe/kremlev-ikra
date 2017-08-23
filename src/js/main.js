@@ -254,6 +254,7 @@ var log = console.log;
 				$('.iziModal').iziModal('open');
 			});
 		}
+
 		$('.enlarge-count').click(function(e){
 			e.preventDefault();
 			var count = $(this).parents('.bl-count').find('.count .fi-d');
@@ -276,6 +277,7 @@ var log = console.log;
 		};
 		//
 		var basketBadget = $('#bascket-badget');
+		var bookmarkBadget = $('#bookmark-badget');
 		Basket.init(function(_){
 			_.getCard().forEach(function(el,id,arr){
 				$('.bl-card.another-card').append(cardItemTemplate(el));
@@ -283,14 +285,26 @@ var log = console.log;
 			if( !!_.getCountCard() ) basketBadget.stop().fadeIn().text( _.getCountCard() );
 			else basketBadget.stop().fadeOut();
 		});
+		Bookmark.init(function(_){
+			if( !!_.getCountCard() ) bookmarkBadget.stop().fadeIn().text( _.getCountCard() );
+			else bookmarkBadget.stop().fadeOut();
+		});
 
-		// New events changeBasket
-		var changeBasket = new Event('changeBasket');
-		document.addEventListener('changeBasket', function (e) {
+		// New events BasketBookmark
+		var BasketBookmark = new Event('BasketBookmark');
+		document.addEventListener('BasketBookmark', function (e) {
 			if( !!Basket.getCountCard() ) basketBadget.stop().fadeIn().text( Basket.getCountCard() );
 			else basketBadget.stop().fadeOut();
+			if( !!Bookmark.getCountCard() ) bookmarkBadget.stop().fadeIn().text( Bookmark.getCountCard() );
+			else bookmarkBadget.stop().fadeOut();
 		}, !1);
 
+		$('.btni.bookmark').click(function(e){
+			e.preventDefault();
+			var _ = $(this).toggleClass('active').parents('.item-card');
+			Bookmark.addCard(_.data('id'));
+			document.dispatchEvent(BasketBookmark);
+		});
 		$('.btni.bascket').click(function(e){
 			var _ = $(this).parents('.item-card');
 			var el = {
@@ -309,7 +323,7 @@ var log = console.log;
 			}
 			if( $('.bl-card.another-card').children().length ) $('.title-another-card').stop().fadeIn();
 			else $('.title-another-card').stop().fadeOut();
-			document.dispatchEvent(changeBasket);
+			document.dispatchEvent(BasketBookmark);
 		});
 		$('#add-bascket').click(function(e){
 			var _ = $(this).parents('.main-info');
@@ -323,7 +337,7 @@ var log = console.log;
 			};
 			Basket.addCard(el);
 			$('.bl-card.current-card').html(cardItemTemplate(el));
-			document.dispatchEvent(changeBasket);
+			document.dispatchEvent(BasketBookmark);
 		});
 
 
