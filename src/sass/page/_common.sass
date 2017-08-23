@@ -5,6 +5,25 @@ $notice-badget-side: 78px
 
 .wr-card
 	margin: 0
+	position: relative
+	z-index: 1
+	&:before,
+	&:after
+		content: ''
+		display: block
+		position: absolute
+		top: 0
+		left: 0
+		background-color: $color-white
+		z-index: 3
+	&:before
+		width: 100%
+		height: 1px
+		right: 0
+	&:after
+		width: 1px
+		height: 100%
+		bottom: 0
 	.wr-item-card
 		border:
 			top: $border-line
@@ -90,44 +109,6 @@ $notice-badget-side: 78px
 					.bookmark
 					.basket
 
-@media #{$large-and-up}
-	.wr-item-card.col
-		&.l6:nth-of-type(1),
-		&.l6:nth-of-type(2),
-		&.l4:nth-of-type(1),
-		&.l4:nth-of-type(2),
-		&.l4:nth-of-type(3),
-		&.l3:nth-of-type(1),
-		&.l3:nth-of-type(2),
-		&.l3:nth-of-type(3),
-		&.l3:nth-of-type(4)
-			border-top: 0
-		&.l6:nth-of-type(odd),
-		&.l4:nth-of-type(3n+1),
-		&.l3:nth-of-type(4n+1)
-			border-left: 0
-
-@media #{$medium-only}
-	.wr-item-card.col
-		&.m6:nth-of-type(1),
-		&.m6:nth-of-type(2),
-		&.m4:nth-of-type(1),
-		&.m4:nth-of-type(2),
-		&.m4:nth-of-type(3),
-		&.m3:nth-of-type(1),
-		&.m3:nth-of-type(2),
-		&.m3:nth-of-type(3),
-		&.m3:nth-of-type(4)
-			border-top: 0
-		&.m6:nth-of-type(odd),
-		&.m4:nth-of-type(3n+1),
-		&.m3:nth-of-type(4n+1)
-			border-left: 0
-@media #{$small-and-down}
-	.wr-item-card.col
-		border-left: 0
-		&:first-of-type
-			border-top: 0
 
 /*blog*/
 $blog-padding-left: 30px
