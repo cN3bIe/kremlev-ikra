@@ -288,6 +288,9 @@ var log = console.log;
 		Bookmark.init(function(_){
 			if( !!_.getCountCard() ) bookmarkBadget.stop().fadeIn().text( _.getCountCard() );
 			else bookmarkBadget.stop().fadeOut();
+			_.getCard().forEach(function(id){
+				$('[data-id*="'+id+'"]').find('.btni.bookmark').addClass('active');
+			});
 		});
 
 		// New events BasketBookmark

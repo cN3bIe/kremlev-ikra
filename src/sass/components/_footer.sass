@@ -2,13 +2,16 @@
 	border-top: $footer-border-top
 	.wr-nav
 		height: $footer-height-wr-nav
-		padding: 60px 0 45px
+		padding: 50px 0 45px
 		.nav
 			.list-nav
 				.item-nav
 					float: left
-					margin-right: 50px
-					max-width: 200px
+					margin:
+						top: 15px
+						right: 30px
+					max-width: 180px
+					min-width: 100px
 					&:last-of-type
 						margin-right: 0
 					.link-nav.title-nav
@@ -39,3 +42,49 @@
 			height: $footer-height-bottom-line
 			padding: 40px 0
 			text-align: center
+
+@media #{$medium-and-down}
+	.main-footer
+		height: auto
+		.wr-nav
+			height: auto
+			padding: 10px 0
+			.nav
+				.list-nav
+					.item-nav
+						&.bl-logo
+							display: none
+						&:last-of-type
+						.link-nav.title-nav
+						.li-d
+		.bottom-line
+			height: auto
+			.copyright
+			.wr-logoart
+				.logoart
+				.text
+			.wr-bank
+@media #{$small-and-down}
+	.main-footer
+		.wr-nav
+			display: none
+		.bottom-line
+			.copyright
+				text-align: center
+				float: none
+				width: 100%
+				height: auto
+				padding: 10px 0
+				line-height: 1em
+			.wr-logoart
+				float: none
+				width: 100%
+				height: auto
+				padding: 10px 0
+				.logoart
+				.text
+					display: block
+					text-align: center
+			.wr-bank
+				height: auto
+				padding: 10px 0
