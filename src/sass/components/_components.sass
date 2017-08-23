@@ -173,12 +173,18 @@ h6.title
 	&.v1
 		background-color: $color-white
 		color: $color-primary !important
+		&:hover,
+		&:active
+			background-color: $color-primary
+			color: $color-white !important
+			line-height: $btn-height
+			border: $btn-weight-border solid $color-primary-light
 		&.waves-light .waves-ripple
 			$gradient: rgba($color-primary-rgb, 0.2) 0, rgba($color-primary-rgb, 0.3) 40%, rgba($color-primary-rgb, 0.4) 50%, rgba($color-primary-rgb, 0.5) 60%, rgba($color-primary-rgb, 0) 70%
 			background: rgba($color-primary-rgb, 0.4)
 			background: -webkit-radial-gradient($gradient)
-			background: -o-radial-gradient($gradient)
 			background: -moz-radial-gradient($gradient)
+			background: -o-radial-gradient($gradient)
 			background: radial-gradient($gradient)
 .b
 	font-weight: 700

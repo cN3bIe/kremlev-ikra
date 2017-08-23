@@ -1,3 +1,12 @@
+$bl-del-width: 40px
+$bl-del-margin-right: 20px
+$card-info-margin-left: $bl-del-width + $bl-del-margin-right
+
+
+$order-btn-width: 272px
+$wr-total-height: 50px
+
+
 .wr-order-online
 	padding: 30px 27px 29px 50px
 	.order-online
@@ -10,6 +19,29 @@
 			&.dn
 				display: none
 		.bl-btn
+			padding-bottom: 30px
+			border-top: $border-line
+			.continue-shopping
+				width: $order-btn-width
+				margin-top: $wr-total-height
+			.bl-total
+				background-color: $color-bg-section
+				width: $order-btn-width
+				float: right
+				.wr-total
+					height: $wr-total-height
+					line-height: $wr-total-height
+					font-size: 20px
+					.total-title
+						padding: 0 10px
+						float: left
+						width: 90px
+					.total-price
+						font-weight: 700
+						padding: 0 10px
+						text-align: right
+						margin-left: 90px
+				.a-d.btn
 		.bl-card
 			.item-card
 				padding: 40px 0
@@ -17,15 +49,16 @@
 				margin: 0
 				.bl-del
 					float: left
-					width: 40px
-					height: 100%
+					width: $bl-del-width
+					height: $bl-del-width
 					background-size: 11px 11px
 					display: block
 					margin: auto
-					margin-right: 20px
+					margin-right: $bl-del-margin-right
 					box-shadow: none
-					border-radius: 3px
 					transition: all 550ms ease
+					margin-top: 63px
+					border-radius: 50%
 					&:hover
 						background-color: $color-background
 					&:active
@@ -34,12 +67,11 @@
 					&:after
 						width: 45%
 						left: 27%
-				.img
-					float: left
-					min-height: 168px
-					max-width: 184px
-					margin-right: 30px
 				.card-info
+					margin-left: $card-info-margin-left
+					.img
+						min-height: 168px
+						max-width: 100%
 					.title-card
 						margin-bottom: 30px
 						line-height: 24px
@@ -80,3 +112,9 @@
 							&:hover
 								background-color: $color-primary
 								color: $color-white
+					.bl-total
+						text-align: right
+						line-height: 24px
+						font-size: 20px
+						.total-title
+						.price-total
