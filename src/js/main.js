@@ -255,16 +255,20 @@ var log = console.log;
 			});
 		}
 
+		// Увеличивает счетчик товара на 1ед
 		$('.enlarge-count').click(function(e){
 			e.preventDefault();
 			var count = $(this).parents('.bl-count').find('.count .fi-d');
 			count.val( parseInt(count.val()) + 1);
 		});
+		// Уменьшает счетчик товара на 1ед
 		$('.reduce-count').click(function(e){
 			e.preventDefault();
 			var count = $(this).parents('.bl-count').find('.count .fi-d');
 			if( parseInt(count.val()) > 1 ) count.val( parseInt(count.val()) - 1);
 		});
+
+
 		var cardItemTemplate = function(_){
 			var _c = $('#template .item-card').clone();
 			_c.attr('id',_.id);
@@ -275,7 +279,7 @@ var log = console.log;
 			_c.find('.fi-d').val(_.count);
 			return _c;
 		};
-		//
+		// Bookmark & Basket init functional
 		var basketBadget = $('#bascket-badget');
 		var bookmarkBadget = $('#bookmark-badget');
 		Basket.init(function(_){
@@ -362,6 +366,20 @@ var log = console.log;
 				'thumbfit':'scaledown',
 			});
 		}
+
+
+		// AJAX подгрузка новостей
+		$('.btni.more-blog').click(function(e){
+			e.preventDefault();
+			var _ = $(this);
+			$.get('/blog/ajax/').done(function(data){
+				$('.more-bl').append( data );
+			}).fail(function(data){
+				log('Fail');
+			});
+		});
+
+
 	}); /*end document.ready*/
 
 
