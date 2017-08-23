@@ -15,8 +15,6 @@ var log = console.log;
 
 
 
-	console.log('SocialShareKit init');
-	SocialShareKit.init();
 /*
 	console.log('Lazy init');
 	$(".lazy").lazy({
@@ -30,6 +28,35 @@ var log = console.log;
 	*/
 	$(document).ready(function(){
 		console.log('Document ready');
+
+
+		console.log('SocialShareKit init');
+		SocialShareKit.init();
+
+
+
+		/*Links by bookmark & basket page*/
+		var bookmarkLink = $('.top-line .bookmark').attr('href');
+		var basketLink = $('.top-line .basket').attr('href');
+
+		var bookmarkChange = function(id){
+			$.get(bookmarkLink+'?ajax&id='+id)
+			.done(function(data){
+				log('Success bookmark');
+			}).fail(function(data){
+				log('Fail bookmark');
+			});
+		};
+
+		var basketChange = function(id){
+			$.get(basketLink+'?ajax&id='+id)
+			.done(function(data){
+				log('Success basket');
+			}).fail(function(data){
+				log('Fail basket');
+			});
+		};
+
 
 		/*Menu show/hide*/
 		$('.item-menu.catalog').hover(function(){
@@ -144,18 +171,18 @@ var log = console.log;
 
 				_filter[filterLvL] = _filt_str;
 				_filter_str = _filter.reduce(function(ac,arr){
-						if( !ac.length ) return arr;
-						if( !arr.length ) return ac;
-						else{
-							var new_ar = [];
-							ac.forEach(function(acV){
-								arr.forEach(function(arrV){
-									new_ar.push(acV+arrV);
-								});
+					if( !ac.length ) return arr;
+					if( !arr.length ) return ac;
+					else{
+						var new_ar = [];
+						ac.forEach(function(acV){
+							arr.forEach(function(arrV){
+								new_ar.push(acV+arrV);
 							});
-							return new_ar;
-						}
-					},[]).join();
+						});
+						return new_ar;
+					}
+				},[]).join();
 				$grid.isotope({
 					filter: _filter_str
 				});
@@ -199,14 +226,14 @@ var log = console.log;
 
 		/*Pay One Click init*/
 		$('#pay-one-click').click(function(){
-			$(this).add('#add-bascket,.main-info .bookmark').stop().fadeOut(function(){
+			$(this).add('#add-basket,.main-info .bookmark').stop().fadeOut(function(){
 				$('#input-phone,#make-order').stop().fadeIn(function(){});
 				$('.close.v1').css('display','inline-block');
 			});
 		});
 		$('.bl-order .close.v1').click(function(){
 			$(this).add('#input-phone,#make-order').stop().fadeOut(function(){
-				$('#pay-one-click,#add-bascket').stop().fadeIn();
+				$('#pay-one-click,#add-basket').stop().fadeIn();
 				$('.main-info .bookmark').css('display','inline-block');
 			});
 		});
@@ -250,7 +277,7 @@ var log = console.log;
 		if( $('.iziModal').length ){
 			console.log('iziModal init');
 			$('.iziModal').iziModal({width: 1100});
-			$('.btni.bascket').click(function(e){
+			$('.btni.basket').click(function(e){
 				e.preventDefault();
 				$('.iziModal').iziModal('open');
 			});
@@ -281,18 +308,26 @@ var log = console.log;
 			return _c;
 		};
 		// Bookmark & Basket init functional
-		var basketBadget = $('#bascket-badget');
+		var basketBadget = $('#basket-badget');
 		var bookmarkBadget = $('#bookmark-badget');
+
 		Basket.init(function(_){
 			_.getCard().forEach(function(el,id,arr){
 				$('.bl-card.another-card').append(cardItemTemplate(el));
 			});
-			if( !!_.getCountCard() ) basketBadget.stop().fadeIn().text( _.getCountCard() );
-			else basketBadget.stop().fadeOut();
+			if( !!_.getCountCard() ){
+				basketBadget.stop().fadeIn().text( _.getCountCard() );
+				basketBadget.parents('.basket').addClass('active');
+			}else basketBadget.stop().fadeOut().parents('.basket').removeClass('active');
+			_.getCard().forEach(function(el){
+				$('[data-id*="'+el.id+'"]').find('.btni.basket').addClass('active');
+			});
 		});
 		Bookmark.init(function(_){
-			if( !!_.getCountCard() ) bookmarkBadget.stop().fadeIn().text( _.getCountCard() );
-			else bookmarkBadget.stop().fadeOut();
+			if( !!_.getCountCard() ){
+				bookmarkBadget.stop().fadeIn().text( _.getCountCard() );
+				bookmarkBadget.parents('.bookmark').addClass('active');
+			}else bookmarkBadget.stop().fadeOut().parents('.bookmark').removeClass('active');
 			_.getCard().forEach(function(id){
 				$('[data-id*="'+id+'"]').find('.btni.bookmark').addClass('active');
 			});
@@ -303,18 +338,23 @@ var log = console.log;
 		document.addEventListener('BasketBookmark', function (e) {
 			if( !!Basket.getCountCard() ) basketBadget.stop().fadeIn().text( Basket.getCountCard() );
 			else basketBadget.stop().fadeOut();
-			if( !!Bookmark.getCountCard() ) bookmarkBadget.stop().fadeIn().text( Bookmark.getCountCard() );
-			else bookmarkBadget.stop().fadeOut();
+			if( !!Bookmark.getCountCard() ){
+				bookmarkBadget.stop().fadeIn().text( Bookmark.getCountCard() );
+				bookmarkBadget.parents('.bookmark').addClass('active');
+			}else{
+				bookmarkBadget.stop().fadeOut().parents('.bookmark').removeClass('active');
+			}
 		}, !1);
 
 		$('.btni.bookmark').click(function(e){
 			e.preventDefault();
 			var _ = $(this).toggleClass('active').parents('.item-card');
 			Bookmark.addCard(_.data('id'));
+			bookmarkChange(_.data('id'));
 			document.dispatchEvent(BasketBookmark);
 		});
-		$('.btni.bascket').click(function(e){
-			var _ = $(this).parents('.item-card');
+		$('.btni.basket').click(function(e){
+			var _ = $(this).addClass('active').parents('.item-card');
 			var el = {
 				id:_.data('id'),
 				title:_.find('.title-card').text(),
@@ -323,6 +363,7 @@ var log = console.log;
 				price:_.find('.price').text(),
 				oldprice:_.find('.old-price').text()
 			};
+			basketChange(_.data('id'));
 			if( Basket.addCard(el) ){
 				$('.bl-card.another-card').append( $('.bl-card.current-card').find('.item-card') );
 				$('.bl-card.current-card').html(cardItemTemplate(el));
@@ -333,7 +374,7 @@ var log = console.log;
 			else $('.title-another-card').stop().fadeOut();
 			document.dispatchEvent(BasketBookmark);
 		});
-		$('#add-bascket').click(function(e){
+		$('#add-basket').click(function(e){
 			var _ = $(this).parents('.main-info');
 			var el = {
 				id:_.data('id'),
@@ -343,6 +384,7 @@ var log = console.log;
 				price:_.find('.price').text(),
 				oldprice:_.find('.old-price').text() || 0
 			};
+			basketChange(_.data('id'));
 			Basket.addCard(el);
 			$('.bl-card.current-card').html(cardItemTemplate(el));
 			document.dispatchEvent(BasketBookmark);
@@ -383,11 +425,20 @@ var log = console.log;
 		$('.string-search input').change(function(e){
 			var _t = $(this);
 			var _ = _t.parents('.search').find('.wr-fetch');
-			$.get( '/catalog/?ajax&search='+_t.val() ).done(function(data){
+			$.get( '/?s='+_t.val() ).done(function(data){
 				_.html( data );
 			}).fail(function(data){
 				log('Fail');
 			});
+		});
+
+		$('.bl-del').click(function(){
+			var _ = $(this);
+			var _p = _.parents('.item-card').stop().fadeOut();
+			Basket.removeCard(_p.data('id'));
+			basketChange(_p.data('id'));
+			$('.total .sale .price').text( ( parseInt( $('.total .sale .price').text() ) - parseInt( _p.find('.sale').val() ) ) + ' руб.' );
+			$('.total .bl-total .price').text( ( parseInt( $('.total .bl-total .price').text() ) - parseInt( _p.find('.price').text() ) ) + ' руб.' );
 		});
 
 
@@ -396,9 +447,9 @@ var log = console.log;
 
 
 
-	/*ymaps init*/
-	ymaps.ready(function(){
-		$('#city').text( ymaps.geolocation.city || 'Санкт-Петербург' );
+/*ymaps init*/
+ymaps.ready(function(){
+	$('#city').text( ymaps.geolocation.city || 'Санкт-Петербург' );
 		/*
 		log( ymaps.geocode('Москва').then(function(res){
 			log(res);

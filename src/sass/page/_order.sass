@@ -102,10 +102,14 @@
 								background-color: $color-background
 							&:active
 								box-shadow: 0 0 20px 1px rgba(0,0,0,.3)
+							&:before,
+							&:after
+								width: 45%
+								left: 27%
 						.img
 							float: left
-							height: $card-item-content-height
-							width: $card-item-content-height
+							min-height: $card-item-content-height
+							max-width: $card-item-content-height
 							margin-right: 20px
 						.card-info
 							.title-card
