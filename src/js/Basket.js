@@ -19,6 +19,9 @@ console.log('Include Basket.js');
 	Card.prototype.getTotal = function(){
 		return this.price * this.count;
 	};
+	Card.prototype.getOldTotal = function(){
+		return this.oldprice * this.count;
+	};
 	var LS = {
 		set: function(name,data){ localStorage.setItem(name,JSON.stringify(data) ); },
 		get: function(name){ return JSON.parse( localStorage.getItem(name) ); },
@@ -63,10 +66,12 @@ console.log('Include Basket.js');
 	_.getCountCard = function(){return this.card.length;};
 	_.getCount = function(){return this.count;};
 	_.getTotal = function(){return this.total;};
+	_.getOldTotal = function(){return this.oldtotal;};
 	_.change = function(){
 		LS.set('Basket',{
 			count: this.changeCount(),
 			total: this.changeTotal(),
+			oldtotal: this.changeOldTotal(),
 			card: this.card
 		});
 	};
@@ -75,9 +80,8 @@ console.log('Include Basket.js');
 			case 0: return 0;
 			case 1: return this.count = this.card[0].count;
 			default: return (this.count = this.card.reduce( function( sum, el ){
-				sum = parseInt( sum )? sum: sum.count;
 				return sum + el.count;
-			}));
+			},0));
 		}
 	};
 	_.changeTotal = function(){
@@ -86,7 +90,16 @@ console.log('Include Basket.js');
 			case 1: return this.total = this.card[0].getTotal();
 			default: return (this.total = this.card.reduce( function( sum, el ){
 				return sum + el.getTotal();
-			}),0);
+			},0));
+		}
+	};
+	_.changeOldTotal = function(){
+		switch( this.card.length ){
+			case 0: return 0;
+			case 1: return this.oldtotal = this.card[0].getOldTotal();
+			default: return (this.oldtotal = this.card.reduce( function( sum, el ){
+				return sum + el.getOldTotal();
+			},0));
 		}
 	};
 	_.addCard = function(){
@@ -101,6 +114,8 @@ console.log('Include Basket.js');
 	};
 	_.changeCard = function(_id,count){
 		if( !_id && !count) return !1;
+		_id = parseInt( _id );
+		count = parseInt( count );
 		var ret;
 		this.card.forEach(function(el,ind,arr){
 			if( el.id === _id ) (ret = arr[ind]).count = count;
