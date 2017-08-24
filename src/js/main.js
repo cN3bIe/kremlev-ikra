@@ -87,9 +87,8 @@ var log = console.log;
 
 		/*Search show/hide string*/
 		$('.search-btn').click(function(){
-			$('.string-search').stop().fadeToggle();
+			$('.string-search,.bg-search,.wr-fetch').stop().fadeToggle();
 			$(this).toggleClass('tcon-transform');
-			$('.wr-fetch').fadeToggle();
 		});
 
 
