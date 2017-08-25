@@ -43,7 +43,7 @@ console.log('Include Basket.js');
 	};
 	_.nobj = function(obj,title,img,count,price,oldprice){
 		if(obj instanceof Object) return {
-			id: parseInt(obj.id) || 0,
+			id: obj.id.replace(/(\W|\s)+/g,'') || 0,
 			title: obj.title || 'Без имени',
 			img: obj.img || '',
 			count: parseInt(obj.count) || 0,
@@ -51,7 +51,7 @@ console.log('Include Basket.js');
 			oldprice: parseInt(obj.oldprice) || 0
 		};
 		else return {
-			id: parseInt(obj) || 0,
+			id: obj.replace(/(\W|\s)+/g,'') || 0,
 			title: title || 'Без имени',
 			img: img || '',
 			count: parseInt(count) || 0,
@@ -60,8 +60,12 @@ console.log('Include Basket.js');
 		};
 	};
 	_.getCard = function(id_card){
-		if(id_card) return this.card.filter(function(el){return el.id === id_card}).shift();
+		if(id_card) return this.card.filter(function(el){return el.id === id_card.replace(/(\W|\s)+/g,'')}).shift();
 		else return this.card;
+	};
+	_.hasCard = function(id_card){
+		id_card = id_card.replace(/(\W|\s)+/g,'');
+		return this.card.some(function(el){return el.id === id_card;});
 	};
 	_.getCountCard = function(){return this.card.length;};
 	_.getCount = function(){return this.count;};
@@ -114,7 +118,7 @@ console.log('Include Basket.js');
 	};
 	_.changeCard = function(_id,count){
 		if( !_id && !count) return !1;
-		_id = parseInt( _id );
+		_id = _id.replace(/(\W|\s)+/g,'');
 		count = parseInt( count );
 		var ret;
 		this.card.forEach(function(el,ind,arr){
@@ -125,7 +129,7 @@ console.log('Include Basket.js');
 	};
 	_.removeCard = function(id_card){
 		this.card = this.card.filter(function(el,index,arr){
-			return el.id !== parseInt(id_card);
+			return el.id !== id_card.replace(/(\W|\s)+/g,'');
 		});
 		this.change();
 	};

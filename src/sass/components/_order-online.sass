@@ -7,6 +7,12 @@ $order-btn-width: 272px
 $wr-total-height: 50px
 
 
+$add-in-bookmark-del-height: 100px
+$bl-cancel: 40px
+$bl-del-select-height: $add-in-bookmark-del-height + $bl-cancel
+$bl-del-select-top: ( $bl-del-select-height - $bl-del-width )/ 2
+
+
 .wr-order-online
 	padding: 30px 27px 29px 50px
 	.order-online
@@ -47,6 +53,7 @@ $wr-total-height: 50px
 				padding: 40px 0
 				height: 248px
 				margin: 0
+				position: relative
 				.bl-del
 					float: left
 					width: $bl-del-width
@@ -67,6 +74,41 @@ $wr-total-height: 50px
 					&:after
 						width: 45%
 						left: 27%
+				.bl-del-select
+					left: 0
+					z-index: 2
+					position: absolute
+					width: 354px
+					text-align: center
+					background-color: $color-white
+					line-height: 15px
+					font-size: 14px
+					box-shadow: 0px 0px 20px rgba(127,127,127,0.3), 0px 0px 20px rgba(127,127,127,0.3)
+					top: 17%
+					height: $bl-del-select-height
+					a:hover
+						text-decoration: underline
+					.ic
+						display: block
+						margin: 0 auto 5px
+					.bl-bookmark
+						height: $add-in-bookmark-del-height
+						margin-right: -1px
+						.del-in-bookmark
+							padding-top: 20px
+							height: $add-in-bookmark-del-height
+						.add-in-bookmark
+							padding-top: 20px
+							height: $add-in-bookmark-del-height
+					.del
+						border-left: $border-line
+						height: $add-in-bookmark-del-height
+						padding-top: 20px
+					.cancel
+						margin-top: -1px
+						border-top: $border-line
+						height: $bl-cancel
+						line-height: $bl-cancel
 				.card-info
 					margin-left: $card-info-margin-left
 					.img

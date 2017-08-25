@@ -299,8 +299,46 @@ var log = console.log;
 				var count = $(this).parents('.bl-count').find('.count .fi-d');
 				if( parseInt(count.val()) > 1 ) count.val( parseInt(count.val()) - 1);
 			});
+			/*Открыть блок с выбором "Удалить", "Добавить в закладки"*/
+			jq.find('.bl-del').click(function(e){
+				e.preventDefault();
+				var _ = $(this).parents('.item-card');
+				_.find('.bl-del-select').stop().fadeIn();
+				if( Bookmark.hasCard(_.attr('id')) ){
+					_.find('.del-in-bookmark').css('display','block');
+					_.find('.add-in-bookmark').hide();
+				}else{
+					_.find('.add-in-bookmark').css('display','block');
+					_.find('.del-in-bookmark').hide();
+				}
+			});
+			/*Закрыть блок с выбором "Удалить", "Добавить в закладки"*/
+			jq.find('.bl-del-select .cancel').click(function(e){
+				e.preventDefault();
+				$(this).parents('.item-card').find('.bl-del-select').stop().fadeOut();
+			});
+			/*Убрать из корзины поместиьь в закладки"*/
+			jq.find('.add-in-bookmark').click(function(e){
+				e.preventDefault();
+				var _ = $(this).parents('.item-card');
+				_.find('.bl-del-select').stop().fadeOut();
+				Bookmark.addCard(_.attr('id'));
+				bookmarkAJAX(_.attr('id'));
+				$('[data-id*="'+_.attr('id')+'"]').find('.btni.bookmark').addClass('active');
+				_.find('.del').click();
+			});
+			/*Убрать из закладок"*/
+			jq.find('.del-in-bookmark').click(function(e){
+				e.preventDefault();
+				var _ = $(this).parents('.item-card');
+				_.find('.bl-del-select').stop().fadeOut();
+				Bookmark.removeCard(_.attr('id'));
+				bookmarkAJAX(_.attr('id'));
+				$('[data-id*="'+_.attr('id')+'"]').find('.btni.bookmark').removeClass('active');
+			});
 			// Удалить товар
-			jq.find('.bl-del').click(function(){
+			jq.find('.del').click(function(e){
+				e.preventDefault();
 				var _ = $(this);
 				var _p = _.parents('.item-card').stop().fadeOut(function(){
 					$(this).remove();
