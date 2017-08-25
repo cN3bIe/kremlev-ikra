@@ -60,11 +60,11 @@ console.log('Include Basket.js');
 		};
 	};
 	_.getCard = function(id_card){
-		if(id_card) return this.card.filter(function(el){return el.id === id_card.replace(/(\W|\s)+/g,'')}).shift();
+		if(id_card) return this.card.filter(function(el){return el.id === (''+id_card).replace(/(\W|\s)+/g,'')}).shift();
 		else return this.card;
 	};
 	_.hasCard = function(id_card){
-		id_card = id_card.replace(/(\W|\s)+/g,'');
+		id_card = (''+id_card).replace(/(\W|\s)+/g,'');
 		return this.card.some(function(el){return el.id === id_card;});
 	};
 	_.getCountCard = function(){return this.card.length;};
@@ -90,7 +90,7 @@ console.log('Include Basket.js');
 	};
 	_.changeTotal = function(){
 		switch( this.card.length ){
-			case 0: return 0;
+			case 0: return this.total = 0;
 			case 1: return this.total = this.card[0].getTotal();
 			default: return (this.total = this.card.reduce( function( sum, el ){
 				return sum + el.getTotal();
@@ -99,7 +99,7 @@ console.log('Include Basket.js');
 	};
 	_.changeOldTotal = function(){
 		switch( this.card.length ){
-			case 0: return 0;
+			case 0: return this.oldtotal = 0;
 			case 1: return this.oldtotal = this.card[0].getOldTotal();
 			default: return (this.oldtotal = this.card.reduce( function( sum, el ){
 				return sum + el.getOldTotal();
@@ -118,7 +118,7 @@ console.log('Include Basket.js');
 	};
 	_.changeCard = function(_id,count){
 		if( !_id && !count) return !1;
-		_id = _id.replace(/(\W|\s)+/g,'');
+		_id = (''+_id).replace(/(\W|\s)+/g,'');
 		count = parseInt( count );
 		var ret;
 		this.card.forEach(function(el,ind,arr){
@@ -129,7 +129,7 @@ console.log('Include Basket.js');
 	};
 	_.removeCard = function(id_card){
 		this.card = this.card.filter(function(el,index,arr){
-			return el.id !== id_card.replace(/(\W|\s)+/g,'');
+			return el.id !== (''+id_card).replace(/(\W|\s)+/g,'');
 		});
 		this.change();
 	};

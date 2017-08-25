@@ -39,6 +39,12 @@ var log = console.log;
 		var bookmarkLink = $('.top-line .bookmark').attr('href');
 		var basketLink = $('.top-line .basket').attr('href');
 
+		var numberStep = function(now, tween) {
+			var floored_number = Math.floor(now), target = $(tween.elem);
+			target.prop('number',floored_number).text( floored_number + ' руб.');
+		};
+
+
 		var bookmarkAJAX = function(id){
 			$.get(bookmarkLink+'?ajax&id='+id)
 			.done(function(data){
@@ -121,9 +127,16 @@ var log = console.log;
 		},
 		handleScroll = function(){
 			var sw = $(this).scrollTop();
-			if( sw > 200 ) $('#moveup').removeClass('scale-out');
-			else $('#moveup').addClass('scale-out');
+			if( sw > 200 ){
+				$('#moveup').removeClass('scale-out');
+				/*Когда ниже прокручиваешь то верхнее меню прилипает и появляется как только добавляеш в закладки*/
+				$('.wr-const-top-line').addClass('fixed');
+			}else{
+				$('#moveup').addClass('scale-out');
+				$('.wr-const-top-line').removeClass('fixed');
+			}
 		};
+
 
 
 
@@ -141,7 +154,9 @@ var log = console.log;
 
 
 
+		// var top_line_fixed = function(){
 
+		// };
 		/*form-filter change init*/
 		/*$('.form-filter input[type="checkbox"]').change(function(){
 			var _=$(this);
@@ -273,7 +288,6 @@ var log = console.log;
 
 
 
-
 		if( $('.iziModal').length ){
 			console.log('iziModal init');
 			$('.iziModal').iziModal({
@@ -317,7 +331,7 @@ var log = console.log;
 				e.preventDefault();
 				$(this).parents('.item-card').find('.bl-del-select').stop().fadeOut();
 			});
-			/*Убрать из корзины поместиьь в закладки"*/
+			/*Убрать из корзины поместиь в закладки"*/
 			jq.find('.add-in-bookmark').click(function(e){
 				e.preventDefault();
 				var _ = $(this).parents('.item-card');
@@ -346,21 +360,30 @@ var log = console.log;
 				});
 				Basket.removeCard(_p.attr('id'));
 				basketAJAX(_p.data('id'),0);
-				$('.total .sale .price').text( Basket.getOldTotal() - Basket.getTotal() + ' руб.' );
+				$('.total .sale .price')//.text( Basket.getOldTotal() - Basket.getTotal() + ' руб.' );
+				.stop().animateNumber({
+					number: (Basket.getOldTotal() - Basket.getTotal()),
+					numberStep: numberStep
+				});
 				$('[data-id*="'+_p.attr('id')+'"]').find('.btni.basket').removeClass('active');
 				document.dispatchEvent(BasketBookmark);
 			});
-
 
 			// Изменение счетчика и автоматический расчет
 			var totalCard = function(){
 				var _ = $(this).parents('.item-card');
 				var card = Basket.changeCard( _.attr('id'), _.find('.bl-count .count .fi-d').val() );
 				if(card){
-					_.find('.price-total').text( card.getTotal() + ' руб.');
+					_.find('.price-total').stop().animateNumber({
+						number: card.getTotal(),
+						numberStep: numberStep
+					});
 					basketAJAX(card.id,card.count);
-					$('.total .bl-total .price').text( Basket.getTotal() + ' руб.' );
 				}
+				$('.total .bl-total .price').stop().animateNumber({
+					number: Basket.getTotal(),
+					numberStep: numberStep
+				});
 			};
 			jq.find('.count .fi-d').on('input change',function(){ totalCard.apply(this); });
 			jq.find('.enlarge-count,.reduce-count').click(function(){ totalCard.apply(this); });
@@ -368,6 +391,8 @@ var log = console.log;
 		};
 		btnInit($('body'));
 
+		/*Функция для изменения верхнего меню*/
+		var d;
 		var cloneCardTemplate = function(_){
 			var _c = $('#template .item-card').clone();
 			_c.attr('id',_.id);
@@ -413,6 +438,7 @@ var log = console.log;
 				basketBadget.parents('.basket').addClass('active');
 			}else{
 				basketBadget.stop().fadeOut().parents('.basket').removeClass('active');
+				$('.iziModal').iziModal('close');
 			}
 			if( !!Bookmark.getCountCard() ){
 				bookmarkBadget.stop().fadeIn().text( Bookmark.getCountCard() );
@@ -420,7 +446,11 @@ var log = console.log;
 			}else{
 				bookmarkBadget.stop().fadeOut().parents('.bookmark').removeClass('active');
 			}
-			$('.total .bl-total .price').text( Basket.getTotal() + ' руб.' );
+			$('.total .bl-total .price')//.text( Basket.getTotal() + ' руб.' );
+			.stop().animateNumber({
+				number: Basket.getTotal(),
+				numberStep: numberStep
+			});
 		}, !1);
 
 		//Additing product in bookmark

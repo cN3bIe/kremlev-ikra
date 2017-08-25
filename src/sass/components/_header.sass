@@ -13,152 +13,171 @@
 		max-width: $logo-width
 		min-height: $logo-height
 	.bl-menu
-		.top-line
+		.wr-const-top-line
 			height: $header-top-line-height
-			margin: 0
-			margin-left: 155px
-			position: relative
-			.bl-city
-				position: relative
-				float: left
-				height: 100%
-				padding: 25px 0
-				color: $color-primary
-				line-height: 19px
-				font:
-					size: 16px
-					weight: 400
-				#city
-					cursor: pointer
-					background: url('#{$path-design}arrow-dark-down.png') right center no-repeat
-					padding-right: 30px
-					min-width: 185px
-					display: inline-block
-				.bl-search-city
-					display: none
-					box-shadow: 0px 0px 6px rgba(0,0,0,0.08), 0px 0px 6px rgba(0,0,0,0.08)
-					top: 74%
-					width: 100%
-					position: absolute
-					z-index: 1
-					left: 40px
-					border: $border-line
+			&.fixed
+				.wr-top-line
+					position: fixed
+					left: 0
+					right: 0
+					top: - $header-top-line-height
+					z-index: 10
 					background-color: $color-white
-					.wr-fi
-						padding: 20px
-						border-bottom: $border-line
-						.fi-d
-							border: $border-line
-							padding: 16px
-							width: 100%
-							height: 52px
-							background-color: $color-bg-section
-					.list-city
-						.item-city
-							border-bottom: $border-line
-							padding: 10px 45px
+					border-bottom: $border-line
+					transition: .3s ease
+				&.active,
+				&:hover
+					top: 0
+				.top-line
+					margin: auto
+			.wr-top-line
+				height: $header-top-line-height
+				.top-line
+					height: 100%
+					margin: 0
+					margin-left: 155px
+					position: relative
+					.bl-city
+						position: relative
+						float: left
+						height: 100%
+						padding: 25px 0
+						color: $color-primary
+						line-height: 19px
+						font:
+							size: 16px
+							weight: 400
+						#city
 							cursor: pointer
-							&:hover
+							background: url('#{$path-design}arrow-dark-down.png') right center no-repeat
+							padding-right: 30px
+							min-width: 185px
+							display: inline-block
+						.bl-search-city
+							display: none
+							box-shadow: 0px 0px 6px rgba(0,0,0,0.08), 0px 0px 6px rgba(0,0,0,0.08)
+							top: 74%
+							width: 100%
+							position: absolute
+							z-index: 1
+							left: 40px
+							border: $border-line
+							background-color: $color-white
+							.wr-fi
+								padding: 20px
+								border-bottom: $border-line
+								.fi-d
+									border: $border-line
+									padding: 16px
+									width: 100%
+									height: 52px
+									background-color: $color-bg-section
+							.list-city
+								.item-city
+									border-bottom: $border-line
+									padding: 10px 45px
+									cursor: pointer
+									&:hover
+										background-color: $color-bg-section
+					.bl-wr
+						float: right
+						height: 100%
+						padding: 21px 0
+						.search
+							display: inline-block
+							height: 27px
+							vertical-align: bottom
+							.string-search
+								z-index: 4
+								position: absolute
+								top: 0
+								left: 0
+								right: 308px
+								bottom: 0
+								background-color: $color-white
+								padding: 25px 0 25px 10px
+								.fi-d
+									width: 100%
+									line-height: 19px
+									font-size: 16px
+							.wr-fetch
+								position: absolute
+								top: 100%
 								background-color: $color-bg-section
-			.bl-wr
-				float: right
-				height: 100%
-				padding: 21px 0
-				.search
-					display: inline-block
-					height: 27px
-					vertical-align: bottom
-					.string-search
-						z-index: 4
-						position: absolute
-						top: 0
-						left: 0
-						right: 308px
-						bottom: 0
-						background-color: $color-white
-						padding: 25px 0 25px 10px
-						.fi-d
-							width: 100%
-							line-height: 19px
-							font-size: 16px
-					.wr-fetch
-						position: absolute
-						top: 100%
-						background-color: $color-bg-section
-						left: 0
-						right: 0
-						z-index: 1
-						.title-fetch
-							line-height: 19px
-							font-size: 16px
-							text-align: left
-							margin-bottom: 20px
-							&.none
-								margin-bottom: 0
-						.wr-card
-							padding: 40px
-							.wr-item-card
-								width: 191px
-								border: $border-line
-								.item-card
-									padding: 0 0 20px 0
-									.bl-notice
-										min-height: 30px
-									.img
-										min-height: 100px
-									.bl-info
-										padding: 0 20px
-										margin-top: 15px
-										.title-card
-											font-size: 14px
-											line-height: 17px
-										.price-card
-											font-size: 14px
-											margin-top: 10px
-											.old-price
-									.bl-action
-										margin-top: 10px
-										text-align: right
-										height: 25px
-										.bookmark
-										.basket
-					.tcon
-						&.tcon-search--xcross
-							transition: .3s ease
-							height: 100%
-							width: 100%
-							padding: 0
-							.tcon-search__item
-								transform: rotate(-135deg)
-								&::before
-									background-color: $color-gray
-									left: 0
-									right: 0
-									height: 1px
-								&::after
-									border-color: $color-gray
-									left: 0
-									right: -10px
-									width: 23px
-									height: 23px
-									border-width: 1px
-							&.tcon-transform
-								.tcon-search__item
-									width: 35px
-									height: 27px
-									&::after
-										right: 0
-										height: 1px
-										width: 100%
-									&::before
-										width: 100%
-				.bookmark
-				.basket
-				.phone
-					font-size: 17px
-					text-align: right
-					line-height: 27px
-					margin-left: 30px
+								left: 0
+								right: 0
+								z-index: 1
+								.title-fetch
+									line-height: 19px
+									font-size: 16px
+									text-align: left
+									margin-bottom: 20px
+									&.none
+										margin-bottom: 0
+								.wr-card
+									padding: 40px
+									.wr-item-card
+										width: 191px
+										border: $border-line
+										.item-card
+											padding: 0 0 20px 0
+											.bl-notice
+												min-height: 30px
+											.img
+												min-height: 100px
+											.bl-info
+												padding: 0 20px
+												margin-top: 15px
+												.title-card
+													font-size: 14px
+													line-height: 17px
+												.price-card
+													font-size: 14px
+													margin-top: 10px
+													.old-price
+											.bl-action
+												margin-top: 10px
+												text-align: right
+												height: 25px
+												.bookmark
+												.basket
+							.tcon
+								&.tcon-search--xcross
+									transition: .3s ease
+									height: 100%
+									width: 100%
+									padding: 0
+									.tcon-search__item
+										transform: rotate(-135deg)
+										&::before
+											background-color: $color-gray
+											left: 0
+											right: 0
+											height: 1px
+										&::after
+											border-color: $color-gray
+											left: 0
+											right: -10px
+											width: 23px
+											height: 23px
+											border-width: 1px
+									&.tcon-transform
+										.tcon-search__item
+											width: 35px
+											height: 27px
+											&::after
+												right: 0
+												height: 1px
+												width: 100%
+											&::before
+												width: 100%
+						.bookmark
+						.basket
+						.phone
+							font-size: 17px
+							text-align: right
+							line-height: 27px
+							margin-left: 30px
 		.nav-line
 			margin-left: 155px
 			min-height: 75px
@@ -172,9 +191,8 @@
 						height: $header-nav-line-height
 						line-height: $header-nav-line-height
 						.link-item-menu
-							height: 100%
-							padding: 29px 0
-							line-height: 100%
+							height: $header-nav-line-height
+							line-height: $header-nav-line-height
 							font-size: 16px
 					.catalog
 						min-height: $header-nav-line-height
@@ -213,6 +231,7 @@
 				.wr-lvl-1
 					margin: 0 0 0 $nav-catalog-width
 					.wrp-item-menu
+						margin: 0
 						border-top: $border-line
 						.item-menu
 							width: 20%

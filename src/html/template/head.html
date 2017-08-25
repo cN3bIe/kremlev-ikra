@@ -25,31 +25,35 @@
 		<div class="wr">
 			<div class="bl-menu">
 				<div class="bl-logo"><a href="/" class="a-d"><img src="/img/design/kremlev-logo.svg" alt="Logo"></a></div>
-				<div class="top-line row">
-					<div class="bl-wr">
-						[snp tpl="snippets/markup-menu.html" class="menu-btn dn" name="Меню"]
-						<div class="search">
-							<div class="dn string-search">
-								<input type="text" class="fi-d" placeholder="Что будем искать?">
+				<div class="wr-const-top-line">
+					<div class="wr-top-line">
+						<div class="wr top-line row">
+							<div class="bl-wr">
+								[snp tpl="snippets/markup-menu.html" class="menu-btn dn" name="Меню"]
+								<div class="search">
+									<div class="dn string-search">
+										<input type="text" class="fi-d" placeholder="Что будем искать?">
+									</div>
+									<div class="wr-fetch dn"></div>
+									[snp tpl="snippets/markup-search.html" class="search-btn" name="toggle search"]
+								</div>
+								<a href="/bookmark/" class="ic bookmark"><span id="bookmark-badget" class="badget">3</span></a>
+								<a href="/order/" class="ic basket"><span id="basket-badget" class="badget">14</span></a>
+								<a href="tel:88001234567" class="phone">8 800 123 45 67</a>
 							</div>
-							<div class="wr-fetch dn"></div>
-							[snp tpl="snippets/markup-search.html" class="search-btn" name="toggle search"]
-						</div>
-						<a href="/bookmark/" class="ic bookmark"><span id="bookmark-badget" class="badget">3</span></a>
-						<a href="/order/" class="ic basket"><span id="basket-badget" class="badget">14</span></a>
-						<a href="tel:88001234567" class="phone">8 800 123 45 67</a>
-					</div>
-					<div class="bl-city">
-						<span class="ic marker"></span>Ваш город: <span id="city" class="select city">Санкт-Петербург</span>
-						<div class="bl-search-city">
-							<div class="wr-fi">
-								<input type="text" class="fi-d" placeholder="Поиск города">
+							<div class="bl-city">
+								<span class="ic marker"></span>Ваш город: <span id="city" class="select city">Санкт-Петербург</span>
+								<div class="bl-search-city">
+									<div class="wr-fi">
+										<input type="text" class="fi-d" placeholder="Поиск города">
+									</div>
+									<ul class="ul-d list-city">
+										<li class="li-d item-city">Москва</li>
+										<li class="li-d item-city">Санкт-Петербург</li>
+										<li class="li-d item-city">Нижний Новгород</li>
+									</ul>
+								</div>
 							</div>
-							<ul class="ul-d list-city">
-								<li class="li-d item-city">Москва</li>
-								<li class="li-d item-city">Санкт-Петербург</li>
-								<li class="li-d item-city">Нижний Новгород</li>
-							</ul>
 						</div>
 					</div>
 				</div>

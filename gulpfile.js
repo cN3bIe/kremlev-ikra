@@ -63,6 +63,7 @@ gulp.task( 'sass',()=>{
 			'src/libs/custom/js/markup.js',
 			'src/libs/material-design-lite/material.min.js',
 			'src/libs/custom/js/waves/waves.js',
+			'src/libs/aishek-jquery-animateNumber/jquery.animateNumber.min.js',
 		])
 		// .pipe(sourcemaps.init())
 		.pipe( concat( 'custom.min.js') )

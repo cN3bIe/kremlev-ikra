@@ -24,10 +24,12 @@ $notice-badget-side: 78px
 		width: 1px
 		height: 100%
 		bottom: 0
-	.wr-item-card
+	.wr-item-card.col
 		border:
 			top: $border-line
 			left: $border-line
+		margin:
+			left: - $border-weight
 		.item-card
 			padding: 20px
 			background: $color-white
@@ -61,15 +63,23 @@ $notice-badget-side: 78px
 				margin: auto
 			.bl-info
 				margin-top: 27px
-				.title-card
-					text-align: center
-					letter-spacing: 0px
-					font-size: 18px
-					line-height: 22px
+				.wr-title-card
+					height: 38px
+					position: relative
+					.title-card
+						height: auto
+						bottom: 0
+						position: absolute
+						text-align: center
+						letter-spacing: 0px
+						font-size: 18px
+						line-height: 22px
 				.price-card
 					font:
 						weight: 700
 						size: 20px
+					height: 1.2em
+					overflow: hidden
 					margin-top: 15px
 					letter-spacing: 0px
 					text-align: center

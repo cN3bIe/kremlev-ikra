@@ -12,9 +12,13 @@ $bl-cancel: 40px
 $bl-del-select-height: $add-in-bookmark-del-height + $bl-cancel
 $bl-del-select-top: ( $bl-del-select-height - $bl-del-width )/ 2
 
-
 .wr-order-online
+	position: relative
 	padding: 30px 27px 29px 50px
+	.close-izi
+		position: absolute
+		top: 10px
+		right: 10px
 	.order-online
 		.title-online
 			line-height: 29px
@@ -91,6 +95,8 @@ $bl-del-select-top: ( $bl-del-select-height - $bl-del-width )/ 2
 					.ic
 						display: block
 						margin: 0 auto 5px
+						width: 34px
+						height: 34px
 					.bl-bookmark
 						height: $add-in-bookmark-del-height
 						margin-right: -1px
