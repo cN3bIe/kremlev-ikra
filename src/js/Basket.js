@@ -51,7 +51,7 @@ console.log('Include Basket.js');
 			oldprice: parseInt(obj.oldprice) || 0
 		};
 		else return {
-			id: obj.replace(/(\W|\s)+/g,'') || 0,
+			id: (''+obj).replace(/(\W|\s)+/g,'') || 0,
 			title: title || 'Без имени',
 			img: img || '',
 			count: parseInt(count) || 0,
