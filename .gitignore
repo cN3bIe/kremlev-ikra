@@ -4,8 +4,7 @@
 !/src/images
 !/src/img
 !/src/js
+/src/js/libs.min.js
 !/src/libs
-/src/libs/*
-!/src/libs/custom
 /src/libs/custom/dist
 !/src/sass

@@ -6,41 +6,31 @@ browserSync = require( 'browser-sync' ),
 concat = require( 'gulp-concat' ),
 uglifyjs = require( 'gulp-uglifyjs' ),
 cssnano = require( 'gulp-cssnano' ),
-// uncss = require( 'gulp-uncss' ),
 rename = require( 'gulp-rename' ),
 pagebuilder = require('gulp-pagebuilder'),
 sourcemaps = require('gulp-sourcemaps'),
-// htmlmin = require('gulp-htmlmin'),
 del = require( 'del' );
 
 
 gulp.task( 'sass',()=>{
 	return gulp.src('src/sass/**/*.+(sass|scss)')
-		// .pipe(sourcemaps.init())
+		.pipe(sourcemaps.init())
 		.pipe( sass({ outputStyle: 'compressed' }) ).on( 'error', sass.logError )
-		/*.pipe( uncss({
-			html: ['src/**//*.html']
-		}) )*/
-		// .pipe(sourcemaps.write())
+		.pipe(sourcemaps.write())
 		.pipe( gulp.dest('src/css') )
 		.pipe( browserSync.reload({ stream:!0 }) );
 })
 
-
 .task( 'html',()=>{
 	return gulp.src( 'src/html/page/**/*.html' )
 		.pipe( pagebuilder( 'src/html/template'))
-		// .pipe( htmlmin( {collapseWhitespace: true} ) )
 		.pipe( gulp.dest('src'));
 })
 
 
 .task( 'browser-sync',()=>{
 	browserSync({
-		/*server:{
-			baseDir: 'src/'
-			},*/
-		proxy:'http://ikra.ru/',
+		proxy:'http://kremlev.ru/',
 		notify: false
 	});
 })
@@ -50,10 +40,10 @@ gulp.task( 'sass',()=>{
 	return gulp.src([
 			'src/libs/custom/sass/custom.sass'
 		])
-		// .pipe(sourcemaps.init())
+		.pipe(sourcemaps.init())
 		.pipe( sass({ outputStyle: 'compressed' }) ).on( 'error', sass.logError )
 		.pipe( rename({'suffix':'.min'}) )
-		// .pipe(sourcemaps.write())
+		.pipe(sourcemaps.write())
 		.pipe( gulp.dest( 'src/libs/custom/dist' ) );
 })
 
@@ -65,10 +55,8 @@ gulp.task( 'sass',()=>{
 			'src/libs/custom/js/waves/waves.js',
 			'src/libs/aishek-jquery-animateNumber/jquery.animateNumber.min.js',
 		])
-		// .pipe(sourcemaps.init())
 		.pipe( concat( 'custom.min.js') )
 		.pipe( uglifyjs() )
-		// .pipe(sourcemaps.write())
 		.pipe( gulp.dest( 'src/libs/custom/dist' ) );
 })
 
@@ -85,10 +73,10 @@ gulp.task( 'sass',()=>{
 		'src/libs/social-share-kit-1.0.14/dist/js/social-share-kit.min.js',
 		'src/libs/custom/dist/custom.min.js',
 		] )
-		// .pipe(sourcemaps.init())
+		.pipe(sourcemaps.init())
 		.pipe( concat( 'libs.min.js') )
 		.pipe( uglifyjs() )
-		// .pipe(sourcemaps.write())
+		.pipe(sourcemaps.write())
 		.pipe( gulp.dest( 'src/js' ) );
 })
 
@@ -102,10 +90,10 @@ gulp.task( 'sass',()=>{
 			'src/libs/custom/dist/custom.min.css',
 			'src/libs/material-design-lite/material.min.css',
 		])
-		// .pipe(sourcemaps.init())
+		.pipe(sourcemaps.init())
 		.pipe( concat( 'libs.min.css' ) )
 		.pipe( cssnano() )
-		// .pipe(sourcemaps.write())
+		.pipe(sourcemaps.write())
 		.pipe( gulp.dest( 'src/css') );
 })
 
