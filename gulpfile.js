@@ -123,13 +123,13 @@ gulp.task( 'sass',()=>{
 
 
 
-.task( 'build',[ 'clean','sass','libs' ],()=>{
+.task( 'build',[ 'clean','sass','libs' ],(done)=>{
 	var css = gulp.src( 'src/css/**/*.css' ).pipe( gulp.dest( 'dist/css' ) );
 	var img = gulp.src( 'src/img/**/*').pipe( gulp.dest( 'dist/img' ) );
 	var fonts = gulp.src('src/fonts/**/*').pipe( gulp.dest( 'dist/fonts' ) );
 	var js = gulp.src( 'src/js/**/*' ).pipe( gulp.dest( 'dist/js' ) );
 	var html = gulp.src('src/*.html').pipe( gulp.dest( 'dist' ) );
-		return ;
+	done();
 })
 
 
